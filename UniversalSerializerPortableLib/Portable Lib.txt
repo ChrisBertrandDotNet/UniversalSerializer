@@ -1,0 +1,15 @@
+
+A bit experimental.
+Please give it a try if none of other DLLs fit your needs.
+
+The portable library is limited:
+. For some unknown reason, a System.Security.VerificationException is thrown when setting a property of a framework structure (using setter from a compiled Linq Expression).
+  example: System.Windows.Size, Width property.
+	And of course PropertyInfo.SetValue is completely useless..
+. No container for TypeConverter (CLRTypeConverterContainer).
+. No container for ISerializable and SerializableAttribute (CLRBinaryFormatterContainer).
+. PCL has no function to find appdomain assemblies. We try to find AppDomain in the framework using reflection, but there is no guarantee we find it. Therefore some types can not be  deserialized.
+
+IMPORTANT: In case of failure on project loading in Visual Studio, check this line in UniversalSerializerPortableLib.csproj :
+<ProjectTypeGuids></ProjectTypeGuids>
+This line should not be cut.

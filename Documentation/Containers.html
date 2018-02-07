@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en"><head>
+
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Containers</title>
+  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css">
+</head><body>
+<h1>UniversalSerializer - Containers<br>
+</h1>
+<div class="table_des_matieres">
+<ul  id="mozToc"><!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6-->
+	<li><a href="#mozTocId619784">Making a ITypeContainer</a></li>
+	<li><a href="#mozTocId883671">Tool help functions</a></li>
+	</ul>
+</div>
+
+<p>A ITypeContainer is a class you create, that will be serialized in
+place of another type (structure or class) that would not serialize or
+would be problematic (not efficient, missing fields, etc).</p>
+
+<h2><a name="mozTocId619784" ></a>Making a ITypeContainer [ Modified on version 3.14.5 ]</h2>
+
+<p>The objective is to replace the problematic instance by an easy instance. In general, the container will contain very simple types (<code >string</code>, 
+<code >int</code>, <code >byte</code> array, etc..).</p>
+
+<p>Let&#39;s take an example:</p>
+
+<pre lang="cs">
+/// &lt;summary&gt;
+/// . No default (no-param) constructor.
+/// . The only constructor has a parameter with no corresponding field.
+/// . ATextBox has a private &#39;set&#39; and is different type from constructor&#39;s parameter.
+/// &lt;/summary&gt;
+public class MyStrangeClassNeedsACustomContainer
+{
+    /// &lt;summary&gt;
+    /// It is built from the constructor&#39;s parameter.
+    /// Since its &#39;set&#39; method is not public, it will not be serialized directly.
+    /// &lt;/summary&gt;
+    public TextBox ATextBox { get; private set; }
+
+    public MyStrangeClassNeedsACustomContainer(int NumberAsTitle)
+    {
+        this.ATextBox = new TextBox() { Text = NumberAsTitle.ToString() };
+    }
+}</pre>
+
+<p>As written in the summary, this class causes some difficulties to the serializer(s).</p>
+
+<p>To overcome the problem, we create a container:</p>
+
+<pre lang="cs">
+class ContainerForMyStrangeClass : ITypeContainer
+{
+    #region Here you add data to be serialized in place of the class instance
+
+    public int AnInteger; // We store the smallest, sufficient and necessary data.
+
+    #endregion Here you add data to be serialized in place of the class instance
+
+
+    public ITypeContainer CreateNewContainer(object ContainedObject)
+    {
+        MyStrangeClassNeedsACustomContainer sourceInstance = ContainedObject as MyStrangeClassNeedsACustomContainer;
+        return new ContainerForMyStrangeClass() { AnInteger = int.Parse(sourceInstance.ATextBox.Text) };
+    }
+
+    public object Deserialize()
+    {
+        return new MyStrangeClassNeedsACustomContainer(this.AnInteger);
+    }
+
+    public bool IsValidType(Type type)
+    {
+        return Tools.TypeIs(type, typeof(MyStrangeClassNeedsACustomContainer));
+    }
+
+    public bool ApplyEvenIfThereIsAValidConstructor
+    {
+        get { return false; }
+    }
+
+    public bool ApplyToStructures
+    {
+        get { return false; }
+    }
+}</pre>
+
+<p>A detail: all methods behave as static methods (but are not), except 
+<code >Deserialize()</code>.</p>
+
+<p>Let&#39;s see them more in details:</p>
+
+<ul >
+	<li>
+	<pre lang="cs">
+public int AnInteger</pre>
+	It is not part of the <code >ITypeContainer</code> interface. Here we will store the information we will need later at deserialization.</li>
+	<li>
+	<pre lang="cs">
+ITypeContainer CreateNewContainer(object ContainedObject)</pre>
+	Used during serialization. This is a kind of constructor for this container instance. The parameter will be the source class instance to serialize.</li>
+	<li>
+	<pre lang="cs">
+object Deserialize()</pre>
+
+	<p>Used during deserialization. The container instance will produce a new instance, a copy of the source instance, using our field 
+	<code >AnInteger</code>.</p>
+	</li>
+	<li>
+	<pre lang="cs">
+bool IsValidType(Type type)</pre>
+	Used during serialization. Returns true is the type inherits from, or is, the source type. This is a filter. We can choose to accept inherited types or not, to accept several compatible types, etc..</li>
+	<li>
+	<pre lang="cs">
+bool ApplyEvenIfThereIsAValidConstructor</pre>
+	Used during serialization. Returns true if this container applies to class types with a default (no-param) constructor. Can be useful to very general containers.</li>
+	<li>
+	<pre lang="cs">
+bool ApplyToStructures</pre>
+	Used during serialization. Returns true if this container applies to structure types, and not only class types. Can be useful to very general containers.</li>
+</ul>
+
+<p>Steps are:</p>
+
+<ol >
+	<li>The serializer checks if the source type (<code >MyStrangeClassNeedsACustomerContainer</code>) is managed by a container. Our container class (<code >ContainerForMyStrangeClass</code>) answers yes, via 
+	<code >IsValidType()</code>, <code >ApplyEvenIfThereIsANoParamConstructor</code> and 
+	<code >ApplyToStructures</code>.</li>
+	<li>The serializer builds an instance of our container, via 
+	<code >CreateNewContainer()</code>. 
+	<code >CreateNewContainer</code> builds an instance and sets its field 
+	<code >AnInteger</code>.</li>
+	<li>The serializer stores (serializes) this container instance in place of the source instance.</li>
+	<li>The <em>de</em>serializer retrieves (deserializes) the container instance.</li>
+	<li>The deserializer calls <code >Deserialize()</code> and obtains a copy of the source class instance. 
+	<code >Deserialize()</code> creates this copy using its field 
+	<code >AnInteger</code>.</li>
+</ol>
+
+<p>[ New on Version 3.14.5 ] We declare the CustomModifiers 
+globally :</p>
+
+<pre lang="cs">
+public class CustomContainerTestModifiers : CustomModifiers
+{
+  public CustomContainerTestModifiers()
+    : base(Containers: new ITypeContainer[] {
+      new ContainerForMyStrangeClass() // ?-----
+      })
+  {
+  }
+}</pre>
+
+<p>This declaration will automatically be found by the deserializer. [ New in version 3.14.5 ]</p>
+
+<p>Now we serialize it: [ Simplified on version 3.14.5 ]</p>
+
+<pre lang="cs">
+/* This example needs a custom ITypeContainer.
+Normally, this class can not be serialized (see details in its source).
+But thanks to this container, we can serialize the class as a small data (an integer).
+ */
+
+var data = new MyStrangeClassNeedsACustomContainer(123);
+
+using (MemoryStream ms = new MemoryStream())
+{
+  var p = new Parameters() { Stream = ms };
+  UniversalSerializer ser = new UniversalSerializer(p);
+
+  ser.Serialize(data);
+  var data2 = ser.Deserialize&lt;MyStrangeClassNeedsACustomContainer&gt;();
+
+  bool ok = data2.ATextBox.Text == &quot;123&quot;;
+}</pre>
+
+<p>As you can see, the implementation is very easy.</p>
+
+<h2><a  name="mozTocId883671"></a>Tool help functions</h2>
+
+<p>The Tools static class offers some help:</p>
+
+<ul >
+	<li>
+	<pre lang="cs">
+Type Tools.TypeIs(Type ObjectType, Type SearchedType)</pre>
+	It is equivalent to the C#&#39;s &#39;<code >is</code>&#39;, but for Types.<br>For example, 
+	<code >TypeIs((typeof(List&lt;int&gt;)</code>, 
+	<code >typeof(List&lt;&gt;))</code> returns 
+	<code >true</code>.<br></li>
+	<li>
+	<pre lang="cs">
+Type DerivedType(Type ObjectType, Type SearchedType)</pre>
+
+	<p>Returns the type corresponding to <code >SearchedType</code> that is inherited by 
+	<code >ObjectType</code>.<br>For example, 
+	<code >DerivedType(typeof(MyList), typeof(List&lt;&gt;))</code> returns 
+	<code >typeof(List&lt;int&gt;)</code> when 
+	<code >MyList</code> is</p>
+
+	<pre lang="cs">
+MyList: List&lt;int&gt; { }</pre>
+	<p lang="cs">&nbsp;</p>
+	</li>
+	<li>
+	<pre lang="cs">
+FieldInfo FieldInfoFromName(Type t, string name)</pre>
+	Returns the <code >FieldInfo</code> of the named field of 
+	the type. </li>
+</ul>
+
+<p></p>
+</body></html>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{207E91B1-C9F8-4913-88E1-3549EF5F3273}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UniversalSerializerLib3</RootNamespace>
+    <AssemblyName>UniversalSerializer3</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;NET3_5;JSON_DISABLED</DefineConstants>
+    <DocumentationFile>bin\Debug\UniversalSerializer3.XML</DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\UniversalSerializer3.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <BaseAddress>4194304</BaseAddress>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\UniversalSerializer Lib\Attributes.cs">
+      <Link>Attributes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\BinaryReaderWriter2.cs">
+      <Link>BinaryReaderWriter2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\BinarySerializationFormatter.cs">
+      <Link>BinarySerializationFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CLRBinaryFormatterContainer.cs">
+      <Link>CLRBinaryFormatterContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CLRTypeContainer.cs">
+      <Link>CLRTypeContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CLRTypeConverterContainer.cs">
+      <Link>CLRTypeConverterContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CommonToSerializerAndDeserializer.cs">
+      <Link>CommonToSerializerAndDeserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CustomModifiers.cs">
+      <Link>CustomModifiers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\DeserializationFormatter.cs">
+      <Link>DeserializationFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Deserializer.cs">
+      <Link>Deserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ErrorMessages.cs">
+      <Link>ErrorMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\IDictionaryBoxer.cs">
+      <Link>IDictionaryBoxer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\IListBoxer.cs">
+      <Link>IListBoxer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\JSONFormatter.cs">
+      <Link>JSONFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Log.cs">
+      <Link>Log.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Main.cs">
+      <Link>Main.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ModifiersAssembly.cs">
+      <Link>ModifiersAssembly.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Parameters.cs">
+      <Link>Parameters.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ParametricConstructorsManager.cs">
+      <Link>ParametricConstructorsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ParsedAssemblyQualifiedName.cs">
+      <Link>ParsedAssemblyQualifiedName.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\SerializationFormatter.cs">
+      <Link>SerializationFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Serializer.cs">
+      <Link>Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\StreamFormat2.0.cs">
+      <Link>StreamFormat2.0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\StreamFormat3.0.cs">
+      <Link>StreamFormat3.0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Tools.cs">
+      <Link>Tools.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\TypeManager.cs">
+      <Link>TypeManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\UniversalSerializer.cs">
+      <Link>UniversalSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\XmlFormatter.cs">
+      <Link>XmlFormatter.cs</Link>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en"><head>
+
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Examples</title>
+  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css">
+</head><body>
+<h1>UniversalSerializer - Examples<br>
+</h1>
+<div class="table_des_matieres">
+<ul  id="mozToc"><!--mozToc h2 2 h3 3 h4 4 h5 5 h6 6--><li><a href="#mozTocId795666">Simple examples</a>
+<ul><li><a href="#Example with a file name">Example with a file name</a></li>
+	<li><a href="#mozTocId675539">Example with a stream</a></li>
+<li><a href="#mozTocId797405">Example to XML</a></li>
+	<li><a href="#Example_to_JSON">Example to <span>JSON</span></a></li>
+<li><a href="#mozTocId766125">Example for WPF </a></li>
+<li><a href="#mozTocId257446">Example for Windows Forms</a></li>
+</ul>
+	</li>
+	</ul>
+</div>
+<p>
+</p><h2><a  name="mozTocId795666"></a>Simple examples</h2>
+<h3><a name="Example with a file name"></a>Example with a file name<br>
+</h3>
+
+
+<pre lang="cs">
+var data = new Hashtable(); data.Add(0, 1);
+using (var s = new UniversalSerializer(@&quot;d:\temp\serialized.bin&quot;))
+{
+  s.Serialize(data);
+  var data2 = s.Deserialize&lt;Hashtable&gt;();
+}</pre>
+
+<p>That is that simple!</p>
+
+<h3 ><a name="mozTocId675539"></a>Example with a stream</h3>
+
+<pre lang="cs">
+var data = new Hashtable(); data.Add(0, 1);
+using (var ms = new MemoryStream())
+{ 
+   var s = new UniversalSerializer(ms); 
+   s.Serialize(data);  
+   var data2 = s.Deserialize&lt;Hashtable&gt;();
+}</pre>
+
+<h3 ><a name="mozTocId797405"></a>Example to XML</h3>
+
+<pre lang="cs">
+var data = new Hashtable(); data.Add(0, 1);
+using (FileStream fs = new FileStream(&quot;TestXmlFormatter.xml&quot;, FileMode.Create))
+{
+  Parameters parameters = new Parameters()
+  { 
+    Stream = fs, <strong>SerializerFormatter = SerializerFormatters.XmlSerializationFormatter</strong> 
+  };
+  UniversalSerializer ser = new UniversalSerializer(parameters);
+
+  ser.Serialize(data);
+  var deserialized = ser.Deserialize&lt;Hashtable&gt;();
+} </pre>
+
+<h3 ><a name="Example_to_JSON"></a>Example to <span>JSON</span></h3>
+
+<pre lang="cs">
+var data = new Hashtable(); data.Add(0, 1);
+using (FileStream fs = new FileStream(&quot;TestXmlFormatter.xml&quot;, FileMode.Create))
+{
+  Parameters parameters = new Parameters()
+  { 
+    Stream = fs, <strong>SerializerFormatter = SerializerFormatters.JSONSerializationFormatter</strong>
+  };
+  UniversalSerializer ser = new UniversalSerializer(parameters);
+
+  ser.Serialize(data);
+  var deserialized = ser.Deserialize&lt;Hashtable&gt;();
+} </pre>
+
+<h3 >Example for WPF</h3>
+
+<p>There is a specialized DLL for WPF, that manages more WPF types:</p>
+
+<pre lang="cs">
+var data = new System.Windows.Window() { Title = &quot;Hello!&quot; };
+using (var s = new <strong>UniversalSerializerWPF</strong>(@&quot;d:\temp\serialized.bin&quot;))
+{
+  s.Serialize(data);
+  var data2 = s.Deserialize&lt;System.Windows.Window&gt;();
+}</pre>
+
+<h3 ><a name="mozTocId257446"></a>Example for Windows Forms</h3>
+
+<p>There is a specialized DLL for Windows Forms, that manages more Windows Forms types:</p>
+
+<pre lang="cs">
+var data = new System.Windows.Forms.Form() { Text = &quot;Hello!&quot; };
+using (var s = new <strong>UniversalSerializerWinForm</strong>(@&quot;d:\temp\serialized.bin&quot;))
+{
+  s.Serialize(data);
+  var data2 = s.Deserialize&lt;System.Windows.Forms.Form&gt;();
+}</pre>
+
+<p></p>
+
+</body></html>

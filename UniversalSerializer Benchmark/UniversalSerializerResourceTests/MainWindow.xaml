@@ -1,0 +1,42 @@
+﻿<Window x:Class="UniversalSerializerResourceTests.MainWindow"
+				x:Name="MyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:this="clr-namespace:UniversalSerializerResourceTests"
+        Title="UniversalSerializer Benchmark" Height="570" Width="900"
+				Closed="Window_Closed"
+				FocusManager.FocusedElement="{Binding ElementName=ButtonRun}">
+	<TabControl>		
+		<TabItem Header="One serializer test" ToolTip="Test the selected serializer">
+			
+			<StackPanel>
+				<DockPanel>
+					<Label>Serializer:</Label>
+				<ComboBox Name="Serializer" DataContext="{Binding ElementName=MyWindow}" ItemsSource="{Binding SerializersCollection}" SelectedIndex="0" ToolTip="Select a serializer"/>
+				</DockPanel>
+				<this:CommonOptions x:Name="UnitTestOptions"/>
+				<Button Name="ButtonRun" Content="Start test" Click="Button_Click" Margin="0,5,0,0"/>
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="All serializers test" ToolTip="Test all serializers">
+			<StackPanel>
+				<this:CommonOptions x:Name="WholeTestOptions"/>
+				<TextBlock Text="Table file name:" Margin="0,0,0.026,0"/>
+				<TextBox x:Name="TableFileName" Text="R:\WholeTestResultTable.TabSeparated.csv"/>
+				<Button Name="ButtonRunWholeTest" Content="Start tests and export result table" Click="ButtonRunWholeTest_Click"  Margin="0,5,0,0"/>
+				<ListBox x:Name="Log"/>
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="Complete test suite" ToolTip="Run all tests on all serializers" Visibility="Hidden">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal">
+				<TextBlock Text="# of trials per test:"/>
+				<TextBox Margin="5,0,0,0" Text="3"/>
+				</StackPanel>
+				<Button Name="StartSeries" Content="Start test series (can be very long)" Click="StartSeries_Click" />
+				<ListBox x:Name="SeriesLog"/>
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+
+</Window>

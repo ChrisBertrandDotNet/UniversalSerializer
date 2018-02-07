@@ -1,0 +1,5 @@
+﻿
+v3.14.5:
+I had to reference project "ExternalModifiers" to let "ExternalCustomContainerTest()" load it.
+When I only add "ExternalModifiers.dll" to the project as an ordinary file, Assembly.Load do not find it. I am not sure why.
+If someone has a solution, please tell me.

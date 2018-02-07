@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en"><head>
+
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Attributes</title>
+  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css">
+<style type="text/css">
+</style>
+</head><body>
+<h1>UniversalSerializer - Good practices<br>
+</h1>
+<p>
+Your type design can help
+UniversalSerializer in doing its job.</p>
+<p>
+&nbsp;</p>
+<div class="table_des_matieres">
+<ul  id="mozToc"><!--mozToc h2 2 h3 3 h4 4 h5 5 h6 6--><li>
+	<a href="#Constructor">An adequate parametric 
+	constructor</a></li>
+	<li><a href="#List">A true List, not only an Enumerable</a></li>
+	</ul>
+</div>
+<p>
+&nbsp;</p>
+<h2>
+<a name="Constructor"></a>An adequate parametric constructor</h2>
+<p>
+If your type can not have a default (no parameters) constructor, its fields will 
+be used by <span>UniversalSerializer when looking for the parameters of the 
+constructors.</span></p>
+<p>
+Example:</p>
+<pre class="code_source">public class ParametricConstructedClassWithPrivateField
+{
+<span class="auto-style1">	private readonly int[] IntArray;</span>
+
+<span class="auto-style1">	public ParametricConstructedClassWithPrivateField(int[] intArray)</span>
+	{
+<span class="auto-style1">		this.IntArray = intArray;</span>
+	}
+}</pre>
+<p>In this example, <span>UniversalSerializer detects it can use the parametric 
+constructor since the parameter has the same type and nearly same name than a 
+field.<br>It will serialize the private field and use its value on 
+deserialization, calling the constructor.</span></p>
+<p>Suggestion: give the same name to the field and to the constructor parameter, 
+or something close.<br>Example: if the parameter is named "Info", you can name 
+the field "Info", "_Info", "info" or "_info".</p>
+<p>
+&nbsp;</p>
+<h2>
+<a name="List"></a>A true List, not only an Enumerable</h2>
+<p>
+<span>UniversalSerializer needs to be able to add items to this enumeration in 
+order to deserialize it.<br>Problem: IEnumerable, IEnumerable&lt;T&gt; and ICollection 
+define a read-only collection.</span></p>
+<p class="remarque">
+<span>Please note the generic ICollection&lt;T&gt; is 
+a writable collection while ICollection (not generic) is read-only.</span></p>
+<p>
+<span>Suggestion: inherit from IList&lt;T&gt; (generic) or from IList (not generic) when 
+possible.<br><br>If, for some reason, you do not want your type to inherit from 
+IList nor ICollection&lt;T&gt;, you can write a function as Add or Insert.<br>Example:</span><br>
+</p>
+<pre class="code_source">public class L : IEnumerable&lt;int&gt;
+{
+	public void Add(int item)
+	{
+		...
+	}
+	...
+}
+</pre>
+<p class="remarque">Please note this method (Add or Insert) can be private.<br>
+</p>
+</body></html>

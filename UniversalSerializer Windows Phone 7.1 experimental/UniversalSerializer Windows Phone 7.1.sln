@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer Windows Phone 7.1", "UniversalSerializer Windows Phone 7.1\UniversalSerializer Windows Phone 7.1.csproj", "{1F8ECA39-71D5-4692-A817-A9C524E696D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37} = {C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37}
+		{0EF53CC0-EE83-406C-9D13-C0D2E9A20539} = {0EF53CC0-EE83-406C-9D13-C0D2E9A20539}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer3ForWindowsPhone7", "UniversalSerializer2ForWindowsPhone\UniversalSerializer3ForWindowsPhone7.csproj", "{76D4CC7C-8490-45E0-AEB4-3A3123C9D1F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalModifiers", "ExternalModifiers\ExternalModifiers.csproj", "{0EF53CC0-EE83-406C-9D13-C0D2E9A20539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTypes", "TestTypes\TestTypes.csproj", "{C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F8ECA39-71D5-4692-A817-A9C524E696D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8ECA39-71D5-4692-A817-A9C524E696D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8ECA39-71D5-4692-A817-A9C524E696D8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1F8ECA39-71D5-4692-A817-A9C524E696D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8ECA39-71D5-4692-A817-A9C524E696D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8ECA39-71D5-4692-A817-A9C524E696D8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{76D4CC7C-8490-45E0-AEB4-3A3123C9D1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D4CC7C-8490-45E0-AEB4-3A3123C9D1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D4CC7C-8490-45E0-AEB4-3A3123C9D1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D4CC7C-8490-45E0-AEB4-3A3123C9D1F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF53CC0-EE83-406C-9D13-C0D2E9A20539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF53CC0-EE83-406C-9D13-C0D2E9A20539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF53CC0-EE83-406C-9D13-C0D2E9A20539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF53CC0-EE83-406C-9D13-C0D2E9A20539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68E4E6B-DA72-4AAE-940D-E8D33E8A7A37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

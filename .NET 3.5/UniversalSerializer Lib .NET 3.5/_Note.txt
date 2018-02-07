@@ -1,0 +1,5 @@
+The main library for .NET 3.5 .
+
+. Less efficient (with references) than the .NET 4.x librairies since we can not use ConditionalWeakTable.
+. No JSON.
+. We use some IL emission.

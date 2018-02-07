@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html dir="ltr" lang="en"><head>
+
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="en-us" http-equiv="Content-Language">
+<title>UniversalSerializer</title><style type="text/css">
+li {
+  margin-bottom: 4pt;
+}
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+strong {
+  border-top-width: 1px;
+  border-top-style: dotted;
+  border-left-width: 1px;
+  border-left-style: dotted;
+  border-right-width: 1px;
+  border-right-style: dotted;
+  font-size: larger;
+  font-weight: normal;
+  padding-right: 2pt;
+  padding-left: 2pt;
+}
+h1 {
+  text-align: center;
+}
+								  body {
+									  font-family: Verdana, Arial, Helvetica, sans-serif;
+								  }
+
+								  </style>
+  <meta content="Christophe Bertrand" name="author">
+<link href="Documentation/styles.css" rel="stylesheet" type="text/css">
+</head><body>
+<h1><a class="mozTocH1" name="mozTocId901630"></a>UniversalSerializer</h1>
+UniversalSerializer is a fast, 
+open source and easy serializer.<br>Ability to serialize any type is its vocation.<br>
+<br>
+<div style="border-style: groove; border-width: 1px;" class="table_des_matieres" id="mozToc"><!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6-->
+<ul>
+	
+		<li><a href="#Documentation">Documentation</a></li>
+		<li><a href="#mozTocId208519">DLLs</a></li>
+		<li><a href="#mozTocId865750">Solutions</a></li>
+	
+		<li><a href="#mozTocId352437">License</a></li>
+		<li><a href="#mozTocId10858">History</a><ul>
+			<li><a href="#Version_3.15.3.13">Version 3.15.3.13, 2015-03-25</a></li>
+			<li><a href="#Version_3.15.1.12">Version 3.15.1.12, 2015-03-11</a></li>
+			<li><a href="#Version 3.14.10.11">Version 3.14.10.11, 2014-10-14</a></li>
+			<li><a href="#Version_3.14.9.10">Version 3.14.9.10, 
+	2014-09-10</a></li>
+			<li><a href="#Version_3.14.7.9">Version 3.14.7.9, 2014-07-25</a></li>
+			<li><a href="#mozTocId957781">Version 3.14.6.2, 2014-06-10</a></li>
+			<li><a href="#mozTocId482729">Version 3.14.6, 2014-06-04</a></li>
+			<li><a href="#mozTocId351433">Version 3.14.5.2 revision 2, 2014-05-16</a></li>
+			<li><a href="#mozTocId472074">Version 3.14.5.2, 2014-05-13</a></li>
+			<li><a href="#mozTocId472074">Version 3.14.5, 2014-05-05</a></li>
+			<li><a href="#mozTocId888475">Version 2.14.3, 2014-03-17</a></li>
+			<li><a href="#mozTocId798261">Version 2.0, 2013-10-09</a></li>
+			<li><a href="#mozTocId196624">Version 1.0, 2013-07-13</a></li>
+	</ul>
+</ul>
+</div>
+
+<br>
+<h2><a name="Documentation"></a>Documentation</h2>
+<p>Please read the <a href="Documentation/index.html">complete documentation</a>.</p>
+<h2>Technical article</h2>
+<p>Please read my article here:<br>
+<a href="http://www.codeproject.com/Articles/620154/UniversalSerializer">http://www.codeproject.com/Articles/620154/UniversalSerializer</a></p>
+<h2><a class="mozTocH2" name="mozTocId208519"></a>DLLs</h2>
+There are 9 available DLLs:
+
+<ul><li>
+    <p><em>UniversalSerializer3.dll</em>:
+The main general DLL for <strong>.NET 4</strong> or later, with very few framework dependencies.</p></li>
+  <li>
+    <p><em>UniversalSerializer3.dll</em>: The same general DLL, optimized for <strong>.NET 4.5</strong>.
+    <br>
+
+</p>
+  </li>
+  <li><em>UniversalSerializer3.dll</em>: The same general DLL, for <strong>.NET 3.5</strong>.</li>
+    
+    
+<li>
+    <p><em>UniversalSerializer3ForSilverlight.dll</em>:
+For <strong>Silverlight</strong> 5 or later.<br>
+It should be compilable for Silverlight 4 (not tested).<br>
+</p>
+  </li><li>
+    <p><em>UniversalSerializerPortableLib3.dll</em>:
+A <strong>Portable</strong>
+Class Library (PCL) you can use on many frameworks. Tested under .NET.
+It should be usable under Windows Store 8, Windows RT in general,
+MonoDroid, etc.<br>But since I do use these frameworks I let you try and
+give feedback. :)</p>
+  </li><li><em>UniversalSerializer3ForWindowsPhone7.dll</em>: 
+For Windows <strong>Phone 7.5+ (Silverlight)</strong>.<br>
+Please read important notes in its directory.<br>
+    
+    </li><li>
+    <p><em>UniversalSerializer3ForWindowsPhone8.dll</em>:
+For Windows <strong>Phone 8 (Silverlight)</strong>.</p>
+
+  </li><li>
+    <p><em>UniversalSerializerWPF3.dll</em>:
+A specialized DLL for <strong>WPF</strong>, that manages specific WPF types.</p>
+</li><li>
+    <p><em>UniversalSerializerWinForm3.dll</em>:
+A specialized DLL for <strong>Windows Forms</strong>, that manages specific Windows Forms types.</p>
+</li></ul>
+<p>
+</p>
+
+
+<h2><a class="mozTocH2" name="mozTocId865750"></a>Solutions</h2>
+<p>Please read <a href="Documentation/Solutions%20and%20projects.html">here</a>.</p>
+<h2>License</h2>
+UniversalSerializer is published under the Ms-RL license.<br>
+See License.html or <a href="https://www.microsoft.com/en-us/openness/licenses.aspx">https://www.microsoft.com/en-us/openness/licenses.aspx</a><br>In
+short, this license lets you use this code for nearly anything. But
+if you modify this code and if you distribute a software based on this
+modified code, you have to publish the modified source code files (not
+any other source code files). Please read the license for more details.<br>
+<br>
+Some code comes from Mono (<a href="http://www.mono-project.com">http://www.mono-project.com</a>) under the MIT/X11 license (<a href="http://www.mono-project.com/docs/faq/licensing/">http://www.mono-project.com/docs/faq/licensing/</a>).<br>
+See mentions in the source code.<br>
+<br>
+A few lines of code come from protobuf-net (<a href="https://code.google.com/p/protobuf-net/">https://code.google.com/p/protobuf-net/</a>) under the Apache 2 license.<br>
+See mentions in the source code.<br>
+<h2><a class="mozTocH2" name="mozTocId10858"></a>History</h2>
+<h3><a name="Version_3.15.3.13"></a>Version 3.15.3.13, 2015-03-25</h3>
+<ul>
+	<li>Improved: parametric constructors can use inherited fields.<br>That 
+	makes more types serializable.</li>
+	<li>Corrected: Nullable&lt;T&gt;.hasValue added.<br>Please note that may prevent 
+	this version of UniversalSerializer from reading files that has been 
+	serialized using a previous version.</li>
+</ul>
+<h3><a name="Version_3.15.1.12"></a>Version 3.15.1.12, 2015-03-11</h3>
+<ul>
+	<li>Corrected: Arrays in ParsedAssemblyQualifiedName.</li>
+	<li>Corrected: Circular types in a parametric-constructed class now work 
+	(except in some rare situations).</li>
+	<li>Corrected: Circular types of a generic dictionary now work.</li>
+	<li>Corrected: useless code removed.</li>
+</ul>
+<h3><a name="Version 3.14.10.11"></a>Version 3.14.10.11, 2014-10-14</h3>
+<ul>
+	<li>Added: Error descriptions to the documentation.</li>
+	<li>Added: "Good practices" to the documentation.</li>
+	<li>Improved: Error numbering connected to the documentation.</li>
+	<li>Improved: incorrect external converters in .NET do not block containers 
+	anymore.</li>
+	<li>Added: more WPF types are managed now.</li>
+	<li>Added: separated WinForm test solution for .NET 3.5 .</li>
+	<li>Improved: More types in System.Windows.Media are now serialized.</li>
+	<li>Corrected: Main DLL for .NET 3.5 had a problem in a pure .NET 3.5 
+	solution.</li>
+</ul>
+<h3><a name="Version_3.14.9.10"></a>Version 3.14.9.10, 2014-09-10</h3>
+<ul>
+	<li>Improved: speed of type analysis.</li>
+	<li>Corrected: "ForceSerializeAttribute" did not work correctly on fields.</li>
+	<li>Corrected: in Tester solution, 
+	"ForceSerializeOnPrivateFieldAndProperty.ForcedPrivateField" was not a 
+	field. (oups!)</li>
+</ul>
+<h3><a name="Version_3.14.7.9"></a>Version 3.14.7.9, 2014-07-25</h3>
+<ul>
+	<li>New: TypeMismatchException, when type casting is wrong after 
+	deserialization.</li>
+	<li>New: When deserializing in a loop, sends EndOfStreamException in 
+	the end.</li>
+	<li>Added: Many new test structures in the Benchmark.</li>
+	<li>Corrected: Private properties marked by ForceSerialize are now 
+	serialized.</li>
+	<li>Corrected: exception in loop serialization test with JavascriptSerializer in Benchmark.</li>
+	<li>Corrected: PCL for Windows 8 now has the new attributes.</li>
+	<li>Changed: version numbering is: Main.Year-2000.Month.Release#.</li>
+</ul>
+<h3><a class="mozTocH3" name="mozTocId957781"></a>Version 3.14.6.2, 2014-06-10</h3>
+<ul>
+  <li>New directory "Documentation" with some html texts.<br>
+  </li>
+  <li>New attributes "ForceSerializeAttribute" and "ForceNotSerializeAttribute".</li>
+  <li>New: takes "EditorBrowsableAttribute" into account to not serialize the field or property. That helps with Windows Forms 
+  in design mode.</li>
+  <li>Corrected problems in type analysis when using filters on some conditions.<br>
+  </li>
+
+</ul>
+<h3><a class="mozTocH3" name="mozTocId482729"></a>Version 3.14.6, 2014-06-04</h3>
+
+<ul>
+  <li>Added: new columns in the tables that benchmark produces:<br>
+"Bytes/ms", "Data/file lengths", "data length/GC memory", "data length/Working set".<br>
+</li>
+  <li>Modified: Minor changes in the benchmark's UI.</li>
+  <li>Improved: exception message in CLRBinaryFormatterContainer.</li>
+  <li>New: test serie 'DifficultiesTests()' in Tester solution.</li>
+  <li>New solution "UniversalSerializer Lib .NET 4.5", optimized for .NET 4.5 using "AggressiveInlining".</li>
+  <li>New solution "UniversalSerializer Lib .NET 3.5", less optimized than solutions for .NET 4.x, but can be necessary.</li>
+
+  <li>Corrected: the .NET 4.0 solution "UniversalSerializer Lib" has no
+attribute "AggressiveInlining" any more. No more incompatibility with computers
+where .NET 4.5 is not installed.</li>
+  <li>Corrected: In the benchmark, DataContractSerializer now can serialize instances and circular references.<br>
+  </li>
+
+
+
+
+
+
+</ul>
+<h3><a class="mozTocH3" name="mozTocId351433"></a>Version 3.14.5.2 revision 2, 2014-05-16</h3>
+
+
+
+<ul>
+<li>Some corrections.<br>
+</li>
+</ul>
+<h3><a class="mozTocH3" name="mozTocId472074"></a>Version 3.14.5.2, 2014-05-13</h3>
+
+<ul>
+  <li>Corrected: error with circular types.</li>
+<li>Added: new types in Test solution.</li>
+  <li>Added: new types in Benchmark.</li>
+
+</ul>
+<h3><a class="mozTocH3" name="mozTocId472074"></a>Version 3.14.5, 2014-05-05</h3>
+<ul>
+  
+  <li>Modified: API and stream formats are version 3.0.</li>
+
+  <li>Modified: Namespaces are renamed. <cite>UniversalSerializerLib2</cite> -&gt; <cite>UniversalSerializerLib<em>3</em></cite>.</li>
+  <li>Modified: Modifiers (filters &amp; containers) are declared as classes now, and automatically found by serializer.</li>
+  <li>Added: option <cite>Parameters.ModifiersAssemblies</cite> to declare assemblies that define modifiers.<br>
+Useful when modifiers can not be automatically found by serializer.<br>
+</li>
+  <li>Modified: Stream format version is now 3.0. It can not be read by previous UniversalSerializer (version 2.x)'s DLL..</li>
+  <li>Improved: Saves <cite>DateTime.Kind</cite> in <cite>DateTime</cite>s.</li>
+  <li>Improved: Benchmark's interface has been clarified a bit.</li>
+  <li>Improved: All projects pass VS's code analysis with no error.</li>
+  <li>New: test structures (as <cite>PrimitiveValueTypesStructure</cite>).</li>
+  <li>New: logs warnings in the IDE.</li>
+  <li>New: solution "<cite>UniversalSerializer Windows Store 8 PCL</cite>".</li>
+  <li>New: solution "<cite>UniversalSerializer Windows Phone 7.1 experimental</cite>". Not perfect, but can be useful.</li>
+  <li>Removed: option <cite>CustomModifiers.DoNotDuplicateStrings</cite>. Strings are always saved as references, in stream format 3.0.</li>
+  <li>Removed: <cite>FastJSON</cite> and <cite>FastBinaryJSON</cite> from the benchmark solution, because they do not pass the new deserialized type checks.</li>
+  <li>Removed: old <cite>UniversalSerializer</cite> version 1 from the benchmark solution.<br>
+  </li>
+
+  <li>Corrected: Some regressions in benchmark.</li>
+  <li>Note: DLL version 3 can read and modify version 2 streams, but not version 1 streams.</li>
+</ul>
+
+<h3><a class="mozTocH3" name="mozTocId888475"></a>Version 2.14.3, 2014-03-17</h3>
+<ul>
+  <li>New filter: <cite>CanTestDefaultConstructor</cite>.</li>
+  <li>New filter: <cite>DefaultConstructorTestCleaner</cite>. Useful for WPF's <cite>System.Windows.Window</cite>.</li>
+  <li>New container: <cite>DependencyPropertyContainer</cite>. Uses the right static <cite>DependencyProperty</cite>.</li>
+  <li>Improved: benchmark tells when file paths does not exist.</li>
+  <li>Improved: <cite>CLRTypeConverterContainer.cs</cite> checks type conversion capability first.</li>
+  <li>Modified: benchmark is now 64 bits, as the majority of installed Windows now.</li>
+  <li>Fixed: test solution for Windows Phone 8 now works well.</li>
+  <li>Fixed: error with <code>public readonly</code> fields as constructor parameters.</li>
+  <li>Fixed: some translations in the source code.</li>
+  <li>Note: File formats are compatible with version 2.0 .</li>
+</ul>
+
+<h3><a class="mozTocH3" name="mozTocId798261"></a>Version 2.0, 2013-10-09</h3>
+<ul>
+  <li>Brand new serializer. All code is new, no code from version 1.0.</li>
+  <li>70 X faster, files are 100 X shorter, and it needs 110 X less RAM that the old version 1.</li>
+  <li>Note: file formats have nothing in common with version 1.0.<br>
+DLL version 2.0 can not read files written with version 1.0.</li>
+</ul>
+<h3><a name="mozTocId196624" class="mozTocH3"></a>Version 1.0, 2013-07-13</h3>
+<p>This version was based on FastBinaryJSON, with many extensions and modifications.</p>
+<p><br>
+</p>
+
+
+</body></html>

@@ -1,0 +1,7 @@
+Windows Phone 7.1 framework.
+
+The VS 2010 Phone emulator shows errors (Microsoft Windows CE 7.10.8773).
+Type.MakeByRef is wrong and can not take a generic type as parameter (that is bug or limitation of the O.S.).
+I guess a physical 7.1 phone will not serialize correctly, while a 7.5 will probably do.
+
+No problem with the VS 2012 Phone emulator, but system is Microsoft Windows CE 8.0.9903.0.

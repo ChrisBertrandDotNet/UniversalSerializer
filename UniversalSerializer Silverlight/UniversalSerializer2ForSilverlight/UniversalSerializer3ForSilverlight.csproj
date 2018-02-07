@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{85F7B446-D577-4632-AEB4-DC0D66F255FE}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UniversalSerializer3ForSilverlight</RootNamespace>
+    <AssemblyName>UniversalSerializer3ForSilverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Debug\UniversalSerializer3ForSilverlight.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Release\UniversalSerializer3ForSilverlight.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Json, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\UniversalSerializer Lib\Attributes.cs">
+      <Link>Attributes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\BinaryReaderWriter2.cs">
+      <Link>BinaryReaderWriter2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\BinarySerializationFormatter.cs">
+      <Link>BinarySerializationFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CLRBinaryFormatterContainer.cs">
+      <Link>CLRBinaryFormatterContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CLRTypeContainer.cs">
+      <Link>CLRTypeContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CLRTypeConverterContainer.cs">
+      <Link>CLRTypeConverterContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CommonToSerializerAndDeserializer.cs">
+      <Link>CommonToSerializerAndDeserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\CustomModifiers.cs">
+      <Link>CustomModifiers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\DeserializationFormatter.cs">
+      <Link>DeserializationFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Deserializer.cs">
+      <Link>Deserializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ErrorMessages.cs">
+      <Link>ErrorMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\IDictionaryBoxer.cs">
+      <Link>IDictionaryBoxer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\IListBoxer.cs">
+      <Link>IListBoxer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\JSONFormatter.cs">
+      <Link>JSONFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Log.cs">
+      <Link>Log.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ModifiersAssembly.cs">
+      <Link>ModifiersAssembly.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Parameters.cs">
+      <Link>Parameters.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ParametricConstructorsManager.cs">
+      <Link>ParametricConstructorsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\ParsedAssemblyQualifiedName.cs">
+      <Link>ParsedAssemblyQualifiedName.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\SerializationFormatter.cs">
+      <Link>SerializationFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Serializer.cs">
+      <Link>Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\StreamFormat2.0.cs">
+      <Link>StreamFormat2.0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\StreamFormat3.0.cs">
+      <Link>StreamFormat3.0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\Tools.cs">
+      <Link>Tools.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\TypeManager.cs">
+      <Link>TypeManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\UniversalSerializer.cs">
+      <Link>UniversalSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\UniversalSerializer Lib\XmlFormatter.cs">
+      <Link>XmlFormatter.cs</Link>
+    </Compile>
+    <Compile Include="Compatibility.cs" />
+    <Compile Include="NullableContainer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

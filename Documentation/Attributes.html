@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="en"><head>
+
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Attributes</title>
+  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css"></head><body>
+<h1><a  name="mozTocId901630"></a>UniversalSerializer - Attributes<br>
+</h1>
+<p>
+UniversalSerializer normally does not need attributes, unlike BinaryFormatter or SoapFormatter for example.<br>
+Nevertheless, it can take some attributes into account, when needed.<br>
+</p>
+
+<table style="text-align: left; width: 98%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">Attribute<br>
+      </th>
+      <th style="vertical-align: top;">Usage<br>
+      </th>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">UniversalSerializerLib3.<strong>ForceSerializeAttribute</strong></td>
+      <td style="vertical-align: top;">Orders UniversalSerializer to serialize this field or property, not taking into account other attributes.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">UniversalSerializerLib3.<strong>ForceNotSerializeAttribute</strong></td>
+      <td style="vertical-align: top;">Orders UniversalSerializer to never serialize this field or property, not taking into account other attributes.</td>
+    </tr>
+<tr>
+      <td style="vertical-align: top;">System.<strong>NonSerializedAttribute</strong><br>
+      </td>
+      <td style="vertical-align: top;">Orders the serializer to not serialize a field.<br>
+Comes from BinaryFormatter.<br>
+Can not be applied to a property.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">System.Xml.Serialization.<strong>XmlIgnoreAttribute</strong><br>
+      </td>
+      <td style="vertical-align: top;">Orders the serializer to not serialize a field or a property.<br>
+
+Comes from XmlSerializer.
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="vertical-align: top;">System.ComponentModel.<strong>EditorBrowsableAttribute</strong><br>
+      </td>
+      <td style="vertical-align: top;">Normally, orders the IDE to not present the element (field, property, class, etc).<br>
+UniversalSerializer interpret<span>s</span> it differently and does not serialize the field or property.<br>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+<p><br>
+</p>
+
+<p><br>
+</p>
+<p><br>
+</p>
+</body></html>

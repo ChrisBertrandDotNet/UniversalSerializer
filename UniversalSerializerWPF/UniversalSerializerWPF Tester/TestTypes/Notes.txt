@@ -1,0 +1,4 @@
+﻿
+v3.14.5:
+Why test structures have been moved to an external DLL ?
+That was needed in order to be able to deserialize old (version 2.0) format test files: see project "UniversalSerializer Tester", in "TestFiles".
