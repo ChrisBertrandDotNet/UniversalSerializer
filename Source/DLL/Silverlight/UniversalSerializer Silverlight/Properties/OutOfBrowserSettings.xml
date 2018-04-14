@@ -1,0 +1,10 @@
+<OutOfBrowserSettings ShortName="Application UniversalSerializer Silverlight" EnableGPUAcceleration="False" ShowInstallMenuItem="True">
+  <OutOfBrowserSettings.Blurb>Application UniversalSerializer Silverlight sur votre Bureau ; chez vous, au bureau ou en déplacement.</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="Application UniversalSerializer Silverlight" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.SecuritySettings>
+    <SecuritySettings ElevatedPermissions="Required" />
+  </OutOfBrowserSettings.SecuritySettings>
+  <OutOfBrowserSettings.Icons />
+</OutOfBrowserSettings>

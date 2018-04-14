@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Solutions and projects</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>Solutions and projects<br>
+</h1>
+<div role="navigation">
+<br>
+</div>
+<h2><a class="mozTocH3" id="Remarks"></a>Remarks</h2>
+<ul>
+<li>Many source files are referenced in various projects. <strong>You should not delete, move or rename any directory/file</strong>, you could lose a needed source file.</li>
+<li>There is no compiled files in this archive, except external serializers for the Benchmark.<br>You have to compile the projects you need.</li>
+<li>The projects/solutions were made under Visual Studio 2013 (when possible) and 2017.</li>
+<li>Some solution directories contain additional information in text files, please read them.</li>
+</ul>
+<h2>
+Libraries</h2>
+<p>
+In the archive, the base directory of the libraries is <code>\Source\DLL\</code>.</p>
+<p>
+For example, if you want to compile the DLL for .NET 4.5, open its solution:<br><code>\Source\DLL\NET 4.5\UniversalSerializer for .NET 4.5.sln</code><br>And compile it</p>
+<p>
+Then reference the compiled DLL in your own solution from here:<br><code>\Source\DLL\NET 4.5\UniversalSerializer for .NET 4.5\bin\Debug\UniversalSerializer 3 for NET 4_5.dll</code></p>
+<h2><a id="all_libraries"></a>All libraries at once</h2>
+<p>Alternatively, You can compile all libraries at once:</p>
+<ol>
+<li>Install Visual Studio 2017 or later, Xamarin, Xamarin Forms, the Android SDK, and the UWP framework.<br>You may consider installing the Android Studio first, and the API 27.</li>
+<li>Decompress the source code archive of UniversalSerializer.</li>
+<li>Open this solution:<br><code>Source\DLL\All DLLs as Release\All DLLs as Release.sln</code></li>
+<li>Run the solution (the default project is "Copy DLL files").</li>
+<li>All the libraries will be built and copied to this directory:<br><code>Source\DLL\All DLLs as Release\DLLs</code></li>
+</ol>
+
+<h2><span><a id="Applications"></a>Applications</span></h2>
+<ul>
+<li>A benchmark is available here:<br><code>\Source\Benchmark\UniversalSerializer Benchmark.sln</code><br>This application compares resource consumption of 9 serializers, including 3 
+variations of UniversalSerializer (producing binary, XML and JSON files).</li>
+</ul>
+<p>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

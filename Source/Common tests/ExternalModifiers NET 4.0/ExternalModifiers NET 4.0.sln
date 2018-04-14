@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalModifiers NET 4.0", "ExternalModifiers NET 4.0.csproj", "{ABEFB591-DEE0-4409-B004-774FA0992258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer 3 for NET 4_0", "..\..\DLL\NET 4.0\UniversalSerializer for NET 4_0\UniversalSerializer 3 for NET 4_0.csproj", "{207E91B1-C9F8-4913-88E1-3549EF5F3273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTypes NET 3.5", "..\TestTypes NET 3.5\TestTypes NET 3.5.csproj", "{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

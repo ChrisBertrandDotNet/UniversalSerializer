@@ -1,0 +1,5 @@
+All library projects are grouped in this solution.
+Except Silverlight, as Visual Studio 2017 does not support it.
+
+Open the solution, then run it (the default project is "Copy DLL files").
+The libraries will be copied to the directory "DLLs".

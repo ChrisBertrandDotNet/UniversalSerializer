@@ -1,0 +1,2 @@
+This is the DLL and the test application for UWP (Universal Windows).
+They need Windows 10 and Visual Studio 2017 at least.

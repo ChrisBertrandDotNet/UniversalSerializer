@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Version>0.0.0</Version>
+    <PackageId>TestTypes</PackageId>
+    <Product>UniversalSerializer</Product>
+    <Authors>Christophe Bertrand</Authors>
+    <Company>Christophe Bertrand</Company>
+    <AssemblyName>TestTypes</AssemblyName>
+    <RootNamespace>TestTypes</RootNamespace>
+    <Copyright>Copyright © Christophe Bertrand</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\TestTypes NET 3.5\DataStructures.cs" Link="DataStructures.cs" />
+    <Compile Include="..\TestTypes NET 3.5\FakeProtobufDefs.cs" Link="FakeProtobufDefs.cs" />
+    <Compile Include="..\TestTypes NET 3.5\ThisClassNeedsAnExternalCustomContainer.cs" Link="ThisClassNeedsAnExternalCustomContainer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\TestTypes NET 3.5\Notes.txt" Link="Notes.txt" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description />
+    <Version>3.18.3.14</Version>
+    <Copyright>Copyright © Christophe Bertrand</Copyright>
+    <Authors>Christophe Bertrand</Authors>
+    <Company>Christophe Bertrand</Company>
+    <Product>UniversalSerializer</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Common\Attributes.cs" Link="Common\Attributes.cs" />
+    <Compile Include="..\Common\BinaryReaderWriter2.cs" Link="Common\BinaryReaderWriter2.cs" />
+    <Compile Include="..\Common\BinarySerializationFormatter.cs" Link="Common\BinarySerializationFormatter.cs" />
+    <Compile Include="..\Common\CLRBinaryFormatterContainer.cs" Link="Common\CLRBinaryFormatterContainer.cs" />
+    <Compile Include="..\Common\CLRTypeContainer.cs" Link="Common\CLRTypeContainer.cs" />
+    <Compile Include="..\Common\CLRTypeConverterContainer.cs" Link="Common\CLRTypeConverterContainer.cs" />
+    <Compile Include="..\Common\CommonToSerializerAndDeserializer.cs" Link="Common\CommonToSerializerAndDeserializer.cs" />
+    <Compile Include="..\Common\CustomModifiers.cs" Link="Common\CustomModifiers.cs" />
+    <Compile Include="..\Common\DeserializationFormatter.cs" Link="Common\DeserializationFormatter.cs" />
+    <Compile Include="..\Common\Deserializer.cs" Link="Common\Deserializer.cs" />
+    <Compile Include="..\Common\ErrorMessages.cs" Link="Common\ErrorMessages.cs" />
+    <Compile Include="..\Common\GuidContainer.cs" Link="Common\GuidContainer.cs" />
+    <Compile Include="..\Common\IDictionaryBoxer.cs" Link="Common\IDictionaryBoxer.cs" />
+    <Compile Include="..\Common\IListBoxer.cs" Link="Common\IListBoxer.cs" />
+    <Compile Include="..\Common\JSONFormatter.cs" Link="Common\JSONFormatter.cs" />
+    <Compile Include="..\Common\Log.cs" Link="Common\Log.cs" />
+    <Compile Include="..\Common\ModifiersAssembly.cs" Link="Common\ModifiersAssembly.cs" />
+    <Compile Include="..\Common\NullableStructureContainer.cs" Link="Common\NullableStructureContainer.cs" />
+    <Compile Include="..\Common\Parameters.cs" Link="Common\Parameters.cs" />
+    <Compile Include="..\Common\ParametricConstructorsManager.cs" Link="Common\ParametricConstructorsManager.cs" />
+    <Compile Include="..\Common\ParsedAssemblyQualifiedName.cs" Link="Common\ParsedAssemblyQualifiedName.cs" />
+    <Compile Include="..\Common\SerializationFormatter.cs" Link="Common\SerializationFormatter.cs" />
+    <Compile Include="..\Common\Serializer.cs" Link="Common\Serializer.cs" />
+    <Compile Include="..\Common\StreamFormat2.0.cs" Link="Common\StreamFormat2.0.cs" />
+    <Compile Include="..\Common\StreamFormat3.0.cs" Link="Common\StreamFormat3.0.cs" />
+    <Compile Include="..\Common\Tools.cs" Link="Common\Tools.cs" />
+    <Compile Include="..\Common\TypeManager.cs" Link="Common\TypeManager.cs" />
+    <Compile Include="..\Common\UniversalSerializer.cs" Link="Common\UniversalSerializer.cs" />
+    <Compile Include="..\Common\XmlFormatter.cs" Link="Common\XmlFormatter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
+</Project>

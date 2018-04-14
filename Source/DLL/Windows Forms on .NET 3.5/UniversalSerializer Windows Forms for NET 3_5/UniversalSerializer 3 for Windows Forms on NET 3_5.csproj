@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B134D1DC-EBF4-4C8D-A326-517AD16CD7FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UniversalSerializerLib3</RootNamespace>
+    <AssemblyName>UniversalSerializer 3 Windows Forms for NET 3_5</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\UniversalSerializer 3 Windows Forms for NET 3_5.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\UniversalSerializer 3 Windows Forms for NET 3_5.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Windows Forms on .NET 4.0\UniversalSerializer Windows Forms\BindingContainer.cs">
+      <Link>BindingContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows Forms on .NET 4.0\UniversalSerializer Windows Forms\BindingContextContainer.cs">
+      <Link>BindingContextContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows Forms on .NET 4.0\UniversalSerializer Windows Forms\BindToObjectContainer.cs">
+      <Link>BindToObjectContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows Forms on .NET 4.0\UniversalSerializer Windows Forms\ErrorMessages.cs">
+      <Link>ErrorMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Windows Forms on .NET 4.0\UniversalSerializer Windows Forms\UniversalSerializerWinForm.cs">
+      <Link>UniversalSerializerWinForm.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NET 3.5\UniversalSerializer Lib .NET 3.5\UniversalSerializer 3 for NET 3_5.csproj">
+      <Project>{207e91b1-c9f8-4913-88e1-3549ef5f3273}</Project>
+      <Name>UniversalSerializer 3 for NET 3_5</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

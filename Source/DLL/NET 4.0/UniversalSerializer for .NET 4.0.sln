@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{D537030F-EFAA-4F3B-9D7A-2B29A3CDCA53}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ABEFB591-DEE0-4409-B004-774FA0992258} = {ABEFB591-DEE0-4409-B004-774FA0992258}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer 3 for NET 4_0", "UniversalSerializer for NET 4_0\UniversalSerializer 3 for NET 4_0.csproj", "{B51FA340-0331-45A0-B166-0CAFEEDA20C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalModifiers NET 4.0", "..\..\Common tests\ExternalModifiers NET 4.0\ExternalModifiers NET 4.0.csproj", "{ABEFB591-DEE0-4409-B004-774FA0992258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTypes NET 3.5", "..\..\Common tests\TestTypes NET 3.5\TestTypes NET 3.5.csproj", "{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D537030F-EFAA-4F3B-9D7A-2B29A3CDCA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D537030F-EFAA-4F3B-9D7A-2B29A3CDCA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D537030F-EFAA-4F3B-9D7A-2B29A3CDCA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D537030F-EFAA-4F3B-9D7A-2B29A3CDCA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEFB591-DEE0-4409-B004-774FA0992258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+﻿<Window x:Class="Tester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:tests="clr-namespace:Test_UniversalSerializer"
+        Title="MainWindow" Height="350" Width="525" Icon="search.ico" Cursor="Pen" WindowState="Maximized">
+	<DockPanel>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+			<Label>Number of failures:</Label>
+			<Label Name="NumberOfFailures" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+		</StackPanel>
+		<DataGrid Name="TestResultsDisplay" ItemsSource="{x:Static tests:Tests.TestResults}"/>
+	</DockPanel>
+</Window>

@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{C3E3ECF7-78B2-4C78-BBF8-CB21E75E6DA2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{270A7D5D-26C2-4A98-B5FA-A8B166275BE5} = {270A7D5D-26C2-4A98-B5FA-A8B166275BE5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer 3 for NET 3_5", "UniversalSerializer Lib .NET 3.5\UniversalSerializer 3 for NET 3_5.csproj", "{207E91B1-C9F8-4913-88E1-3549EF5F3273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalModifiers NET 3.5", "..\..\Common tests\ExternalModifiers NET 3.5\ExternalModifiers NET 3.5.csproj", "{270A7D5D-26C2-4A98-B5FA-A8B166275BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTypes NET 3.5", "..\..\Common tests\TestTypes NET 3.5\TestTypes NET 3.5.csproj", "{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3E3ECF7-78B2-4C78-BBF8-CB21E75E6DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E3ECF7-78B2-4C78-BBF8-CB21E75E6DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E3ECF7-78B2-4C78-BBF8-CB21E75E6DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E3ECF7-78B2-4C78-BBF8-CB21E75E6DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{207E91B1-C9F8-4913-88E1-3549EF5F3273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270A7D5D-26C2-4A98-B5FA-A8B166275BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270A7D5D-26C2-4A98-B5FA-A8B166275BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{270A7D5D-26C2-4A98-B5FA-A8B166275BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270A7D5D-26C2-4A98-B5FA-A8B166275BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

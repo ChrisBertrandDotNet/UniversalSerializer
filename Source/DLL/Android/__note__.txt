@@ -1,0 +1,2 @@
+The DLL for Android.
+The ordinary Mono.Android, not the Xamarin.Forms portable DLL.

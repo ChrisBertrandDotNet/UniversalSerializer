@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{23B124EE-B91A-4C7B-9647-22B4D7F2C284}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D91583F8-2A89-4EFC-81FE-350D79984169} = {D91583F8-2A89-4EFC-81FE-350D79984169}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer 3 Android", "UniversalSerializer 3 Android\UniversalSerializer 3 Android.csproj", "{C91E5889-9B78-4B9B-B8D0-4931DE7C51A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTypes NET 3.5", "..\..\Common tests\TestTypes NET 3.5\TestTypes NET 3.5.csproj", "{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalModifiers Android", "..\..\Common tests\ExternalModifiers Android\ExternalModifiers Android.csproj", "{D91583F8-2A89-4EFC-81FE-350D79984169}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A4C915B-17E1-47F6-B8F4-183FF3719436}"
+	ProjectSection(SolutionItems) = preProject
+		__note__.txt = __note__.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23B124EE-B91A-4C7B-9647-22B4D7F2C284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B124EE-B91A-4C7B-9647-22B4D7F2C284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B124EE-B91A-4C7B-9647-22B4D7F2C284}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{23B124EE-B91A-4C7B-9647-22B4D7F2C284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B124EE-B91A-4C7B-9647-22B4D7F2C284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B124EE-B91A-4C7B-9647-22B4D7F2C284}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C91E5889-9B78-4B9B-B8D0-4931DE7C51A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91E5889-9B78-4B9B-B8D0-4931DE7C51A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91E5889-9B78-4B9B-B8D0-4931DE7C51A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91E5889-9B78-4B9B-B8D0-4931DE7C51A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D28F598B-E00C-4FD2-93D0-104D5D0CD9F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91583F8-2A89-4EFC-81FE-350D79984169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91583F8-2A89-4EFC-81FE-350D79984169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91583F8-2A89-4EFC-81FE-350D79984169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91583F8-2A89-4EFC-81FE-350D79984169}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41CB4FD1-62FD-4EFF-8401-B05EF98C7221}
+	EndGlobalSection
+EndGlobal

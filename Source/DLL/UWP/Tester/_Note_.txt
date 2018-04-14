@@ -1,0 +1,3 @@
+﻿
+For security reasons, the built code is saved to E:\Compilation_UWP\.
+Please change the build directories in the project properties.

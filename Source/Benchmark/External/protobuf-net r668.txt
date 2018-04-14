@@ -1,0 +1,4 @@
+Downloaded pre-compiled version r668 from author's site.
+Now his site is https://github.com/mgravell/protobuf-net
+
+If an exception occurs when using protobuf-net, the DLL could need "IKVM.Reflection.dll". You will find it in the project site, see above.

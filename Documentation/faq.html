@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Frequently Asked Questions</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>Frequently Asked Questions</h1>
+<p>Click on the question to open its answer.</p>
+
+<details>
+<summary>Where are the libraries (DLL) ?</summary>
+<p>In the source code archive, they are in this directory <code>\Source\DLL\</code>.<br>Every platform has its own project.<br>For example:<br><code>Source\DLL\NET 4.5\UniversalSerializer for .NET 4.5\UniversalSerializer 3 for NET 4_5.csproj</code></p>
+<p>Alternatively, You can compile all libraries at once:</p>
+<ol>
+<li>Install Visual Studio 2017 or later, Xamarin, Xamarin Forms, the Android SDK, and the UWP framework.<br>You may consider installing the Android Studio first, and the API 27.</li>
+<li>Extract the source code archive of UniversalSerializer.</li>
+<li>Open this solution:<br><code>Source\DLL\All DLLs as Release\All DLLs as Release.sln</code></li>
+<li>Run the solution (the default project is "Copy DLL files").</li>
+<li>All the libraries will be built and copied to this directory:<br><code>Source\DLL\All DLLs as Release\DLLs</code></li>
+</ol>
+</details>
+
+<details>
+<summary>Is UniversalSerializer thread-safe ? Can it run on parallel threads ?</summary>
+<p>UniversalSerializer is thread-safe, but it is not concurrent.<br>You can serialize from different threads, but the serialization will not operate simultaneously.</p>
+</details>
+
+<details>
+<summary>Is there a PCL (Portable Class Library) serializer ?</summary>
+<p>No. It seems Microsoft abandoned the PCL in favor to the UWP (Universal Windows) and to the .NET Standard.<br>Anyway, programming a PCL was painful, so I removed it.</p>
+</details>
+
+<details>
+<summary>Can I serialize to json on UWP ?</summary>
+<p>No, the json format is not available on UWP.<br>I may implement it someday. But it is not a trivial job.</p>
+</details>
+
+<details>
+<summary>Who wrote UniversalSerializer ?</summary>
+<p>My name is Christophe Bertrand. You will find more information <a href="http://universalserializer.com/author.html">here</a>.</p>
+</details>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><br></p>
+
+
+</div>
+
+</body>
+
+</html>

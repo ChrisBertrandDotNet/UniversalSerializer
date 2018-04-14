@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93CDBDA7-D5E7-4CAF-915A-1D01E2ABB920}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Copy_DLL_files</RootNamespace>
+    <AssemblyName>Copy DLL files</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\android\universalserializer 3 android\bin\debug\UniversalSerializer 3 Android.dll">
+      <Link>Files\UniversalSerializer 3 Android.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\net core 2\universalserializer 3 for net core\bin\debug\netcoreapp2.0\UniversalSerializer 3 for NET Core.deps.json">
+      <Link>Files\UniversalSerializer 3 for NET Core.deps.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\net standard 2\bin\debug\netstandard2.0\UniversalSerializer 3 for NET Standard.deps.json">
+      <Link>Files\UniversalSerializer 3 for NET Standard.deps.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\uwp\universalserializer uwp\bin\x86\debug\UniversalSerializer UWP.pri">
+      <Link>Files\UniversalSerializer UWP.pri</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\android\universalserializer 3 android\bin\debug\UniversalSerializer 3 Android.pdb">
+      <Link>Files\UniversalSerializer 3 Android.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 3.5\universalserializer lib .net 3.5\bin\debug\UniversalSerializer 3 for NET 3_5.dll">
+      <Link>Files\UniversalSerializer 3 for NET 3_5.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 3.5\universalserializer lib .net 3.5\bin\debug\UniversalSerializer 3 for NET 3_5.pdb">
+      <Link>Files\UniversalSerializer 3 for NET 3_5.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 3.5\universalserializer lib .net 3.5\bin\debug\UniversalSerializer 3 for NET 3_5.xml">
+      <Link>Files\UniversalSerializer 3 for NET 3_5.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 4.0\universalserializer for net 4_0\bin\debug\UniversalSerializer 3 for NET 4_0.dll">
+      <Link>Files\UniversalSerializer 3 for NET 4_0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 4.0\universalserializer for net 4_0\bin\debug\UniversalSerializer 3 for NET 4_0.pdb">
+      <Link>Files\UniversalSerializer 3 for NET 4_0.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 4.0\universalserializer for net 4_0\bin\debug\UniversalSerializer 3 for NET 4_0.xml">
+      <Link>Files\UniversalSerializer 3 for NET 4_0.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 4.5\universalserializer for .net 4.5\bin\debug\UniversalSerializer 3 for NET 4_5.dll">
+      <Link>Files\UniversalSerializer 3 for NET 4_5.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 4.5\universalserializer for .net 4.5\bin\debug\UniversalSerializer 3 for NET 4_5.pdb">
+      <Link>Files\UniversalSerializer 3 for NET 4_5.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net 4.5\universalserializer for .net 4.5\bin\debug\UniversalSerializer 3 for NET 4_5.xml">
+      <Link>Files\UniversalSerializer 3 for NET 4_5.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net core 2\universalserializer 3 for net core\bin\debug\netcoreapp2.0\UniversalSerializer 3 for NET Core.dll">
+      <Link>Files\UniversalSerializer 3 for NET Core.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net core 2\universalserializer 3 for net core\bin\debug\netcoreapp2.0\UniversalSerializer 3 for NET Core.pdb">
+      <Link>Files\UniversalSerializer 3 for NET Core.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net standard 2\bin\debug\netstandard2.0\UniversalSerializer 3 for NET Standard.dll">
+      <Link>Files\UniversalSerializer 3 for NET Standard.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\net standard 2\bin\debug\netstandard2.0\UniversalSerializer 3 for NET Standard.pdb">
+      <Link>Files\UniversalSerializer 3 for NET Standard.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\wpf\universalserializer for wpf on net 4.5\bin\debug\UniversalSerializer 3 for WPF on NET 4_5.dll">
+      <Link>Files\UniversalSerializer 3 for WPF on NET 4_5.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\wpf\universalserializer for wpf on net 4.5\bin\debug\UniversalSerializer 3 for WPF on NET 4_5.pdb">
+      <Link>Files\UniversalSerializer 3 for WPF on NET 4_5.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\wpf\universalserializer for wpf on net 4.5\bin\debug\UniversalSerializer 3 for WPF on NET 4_5.xml">
+      <Link>Files\UniversalSerializer 3 for WPF on NET 4_5.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\windows forms on .net 3.5\universalserializer windows forms for net 3_5\bin\debug\UniversalSerializer 3 Windows Forms for NET 3_5.dll">
+      <Link>Files\UniversalSerializer 3 Windows Forms for NET 3_5.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\windows forms on .net 3.5\universalserializer windows forms for net 3_5\bin\debug\UniversalSerializer 3 Windows Forms for NET 3_5.pdb">
+      <Link>Files\UniversalSerializer 3 Windows Forms for NET 3_5.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\windows forms on .net 3.5\universalserializer windows forms for net 3_5\bin\debug\UniversalSerializer 3 Windows Forms for NET 3_5.xml">
+      <Link>Files\UniversalSerializer 3 Windows Forms for NET 3_5.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\windows forms on .net 4.0\universalserializer windows forms\bin\debug\UniversalSerializer 3 Windows Forms for NET 4_0.dll">
+      <Link>Files\UniversalSerializer 3 Windows Forms for NET 4_0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\windows forms on .net 4.0\universalserializer windows forms\bin\debug\UniversalSerializer 3 Windows Forms for NET 4_0.pdb">
+      <Link>Files\UniversalSerializer 3 Windows Forms for NET 4_0.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\windows forms on .net 4.0\universalserializer windows forms\bin\debug\UniversalSerializer 3 Windows Forms for NET 4_0.xml">
+      <Link>Files\UniversalSerializer 3 Windows Forms for NET 4_0.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\uwp\universalserializer uwp\bin\x86\debug\UniversalSerializer UWP.dll">
+      <Link>Files\UniversalSerializer UWP.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\uwp\universalserializer uwp\bin\x86\debug\UniversalSerializer UWP.pdb">
+      <Link>Files\UniversalSerializer UWP.pdb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

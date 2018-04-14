@@ -1,0 +1,3 @@
+The main library for .NET 4.0.
+
+A bit slower than "UniversalSerializer Lib .NET 4.5", since we do not use "AggressiveInlining".

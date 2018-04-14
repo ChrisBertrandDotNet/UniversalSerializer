@@ -1,8 +1,0 @@
-Downloaded pre-compiled version r668 from author's site.
-
-You will find compiled DLLs here:
-https://code.google.com/p/protobuf-net/
-In the archive, look in this directory:
-/full/net30
-
-If an exception occurs when using protobuf-net, the DLL could need "IKVM.Reflection.dll". You will find it in the project site, see above.

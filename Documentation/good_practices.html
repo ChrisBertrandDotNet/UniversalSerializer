@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Attributes</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>Good practices</h1>
+<p>
+Your type design can help
+UniversalSerializer in doing its job.</p>
+<div role="navigation">
+<ul  id="mozToc">
+<li>
+<a href="#Constructor">An adequate parametric 
+constructor</a></li>
+<li><a href="#List">A true IList&lt;T&gt;, not only an Enumerable</a></li>
+</ul>
+</div>
+<h2>
+<a id="Constructor"></a>An adequate parametric constructor</h2>
+<p>
+If your type can not have a default (no parameters) constructor, its fields will 
+be used by <span>UniversalSerializer when looking for the parameters of the 
+constructors.</span></p>
+<p>
+Example:</p>
+<pre class="code_source"><span style="color:#2239a8; font-weight:bold">public class</span> ParametricConstructedClassWithPrivateField
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold">private readonly int</span><span style="color:#000000">[]</span> IntArray<span style="color:#000000">;</span>
+
+<span style="color:#2239a8; font-weight:bold">public</span> <span style="color:#a8227b">ParametricConstructedClassWithPrivateField</span><span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">int</span><span style="color:#000000">[]</span> intArray<span style="color:#000000">)</span>
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold">this</span><span style="color:#000000">.</span>IntArray <span style="color:#000000">=</span> intArray<span style="color:#000000">;</span>
+<span style="color:#000000">}</span>
+<span style="color:#000000">}</span>
+</pre>
+<p>In this example, <span>UniversalSerializer detects it can use the parametric 
+constructor since the parameter has the same type and nearly same name than a 
+field.<br>It will serialize the private field and use its value on 
+deserialization, calling the constructor.</span></p>
+<p>Suggestion: give the same name to the field and to the constructor parameter, 
+or something close.<br>Example: if the parameter is named "Info", you can name 
+the field "Info", "_Info", "info" or "_info".</p>
+<p>
+&nbsp;</p>
+<h2>
+<a id="List"></a>A true IList&lt;T&gt;, not only an Enumerable</h2>
+<p>
+<span>UniversalSerializer needs to be able to add items to this enumeration in 
+order to deserialize it.<br>Problem: IEnumerable, IEnumerable&lt;T&gt; and ICollection 
+define a read-only collection.</span></p>
+<p class="remarque">
+<span>Please note the generic ICollection&lt;T&gt; is 
+a writable collection while ICollection (not generic) is read-only.</span></p>
+<p>
+<span>Suggestion: inherit from IList&lt;T&gt; (generic) or from IList (not generic) when 
+possible.<br><br>If, for some reason, you do not want your type to inherit from 
+IList nor ICollection&lt;T&gt;, you can write a function as Add or Insert.<br>Example:</span><br>
+</p>
+<pre class="code_source"><span style="color:#2239a8; font-weight:bold">public class</span> L <span style="color:#000000">:</span> IEnumerable<span style="color:#000000">&lt;</span><span style="color:#2239a8; font-weight:bold">int</span><span style="color:#000000">&gt;</span>
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold">public void</span> <span style="color:#a8227b">Add</span><span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">int</span> item<span style="color:#000000">)</span>
+<span style="color:#000000">{</span>
+<span style="color:#000000">...</span>
+<span style="color:#000000">}</span>
+<span style="color:#000000">...</span>
+<span style="color:#000000">}</span></pre>
+<p class="remarque">Please note this method (Add or Insert) can be private.<br>
+</p>
+</div>
+
+</body>
+
+</html>

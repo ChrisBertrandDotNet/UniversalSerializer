@@ -1,192 +1,231 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html dir="ltr" lang="en"><head>
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
 
-<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Filters</title>
-  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css">
-</head><body>
-<h1><a  name="mozTocId672935"></a>UniversalSerializer - Filters<br>
-</h1>
-<div class="table_des_matieres">
-<ul  id="mozToc"><!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6-->
-	<li><a href="#mozTocId622330">Available filter categories</a><ul>
-		<li><a href="#mozTocId300773">Type validator filter</a></li>
-		<li><a href="#mozTocId373490">Private fields adder filter</a></li>
-		<li><a href="#mozTocId578924">ForcedParametricConstructorTypes</a></li>
-		<li><a href="#mozTocId642133">CanTestDefaultConstructor (new in version 2.14.3)</a></li>
-		<li><a href="#mozTocId205090">DefaultConstructorTestCleaner (new in version 2.14.3)</a></li>
-	</ul>
-	</li>
-	<li><a href="#mozTocId398858">Making a set of filters [ Modified on version 3.14.5 ]</a></li>
-	<li><a href="#mozTocId883671">Tool help functions</a></li>
-	</ul>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Presentation</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>Filters</h1>
+<div role="navigation">
+<ul  id="mozToc"><li><a href="#mozTocId622330">Available filter categories</a><ul>
+<li><a href="#mozTocId300773">Type validator filter</a></li>
+<li><a href="#mozTocId373490">Private fields adder filter</a></li>
+<li><a href="#mozTocId578924">ForcedParametricConstructorTypes</a></li>
+<li><a href="#mozTocId642133">CanTestDefaultConstructor</a></li>
+<li><a href="#mozTocId205090">DefaultConstructorTestCleaner</a></li>
+</ul>
+</li>
+<li><a href="#mozTocId398858">Making a set of filters</a></li>
+<li><a href="#mozTocId883671">Tool help functions</a></li>
+</ul>
 </div>
 
-<p>A filter is a function that takes a Type as a parameter and tells UniversalSerializer how to serialize it.<br>
+<p>A filter is a function that takes a Type as a parameter and tells UniversalSerializer how to serialize it.</p>
+<p>Contrary to the containers, a filter does not replace a value. It only gives some information to UniversalSerializer about this type.</p>
+<p class="remarque"><strong>IMPORTANT:</strong><br><br>As of 2018-03, I suggest you to implement <a href="containers.html">containers</a> rather than filters for third-party types.<br>The reason is one can not rely on private members and constructors of types in a DLL he does not control.<br>Who knows if someday the third-party DLL author will not modify these private data ?<br>Even if you adapt your filter accordingly, previous serialized files may not be readable anymore.<br>A container can be adapted too. But as it defines its own members, old serialized files remains readable.<br><br>The reason for this notice is I had bad experience with some framework types that have different implementations. For example the ordinary type <code>System.Nullable&lt;T&gt;</code> has private fields with different names under .NET, .NET Core and Silverlight, and even between .NET 3.5 and .NET 4.0. I had to create a container to manage this type independently to the frameworks.<br><br><strong>Please note filters may be deprecated in the next main API (and file) version of UniversalSerializer.</strong><br>Or limited to public information as parametric constructors.</p>
+<p><br>
 </p>
-<h2><a  name="mozTocId622330"></a>Available filter categories</h2>
+<h2><a id="mozTocId622330"></a>Available filter categories</h2>
 
-<h3><a  name="mozTocId300773"></a>Type validator filter</h3>
+<h3><a id="mozTocId300773"></a>Type validator filter</h3>
 
 <p>This filter allows you to prevent UniversalSerializer from serializing some problematic types.</p>
 
-<p>For example, I met some classes using <code >System.IntPtr</code>. Serializing this type only leads to problems since they are only used internally in the classes, even when they are stored in public properties/fields.</p>
+<p>For example, I met some classes using <code >System.IntPtr</code>. Serializing this type only leads to problems since they are only used internally by the classes, even when they are stored in public properties/fields.</p>
 
-<h3><a  name="mozTocId373490"></a>Private fields adder filter</h3>
+<h3><a id="mozTocId373490"></a>Private fields adder filter</h3>
 
 <p>This filter tells the serializer to add a particular private field to the serialization data.</p>
 
 <p>For example, <code >System.Windows.Controls.<a href="http://msdn.microsoft.com/en-us/library/system.windows.controls.panel.aspx">Panel</a></code> needs 
 <code >_uiElementCollection</code> to fill its 
-<code >Children</code> property, since 
+property 
+<code >Children</code>, since 
 <code >Children</code> is read-only. With the filter, the solution is easy. And any type that inherits Panel, such as StackPanel, will benefit this filter.</p>
 
-<h3><a  name="mozTocId578924"></a>ForcedParametricConstructorTypes</h3>
+<h3><a id="mozTocId578924"></a>ForcedParametricConstructorTypes</h3>
 
-<p>It is not a filter but a list of types. When a type is in this list, UniversalSerializer ignores its default (not parametric) constructor and searches for a parametric constructor.<br>Example: 
+<p>It is not a filter but a list of types. When a type is in this list, UniversalSerializer ignores its default (not parametric) constructor and searches for a parametric constructor.</p>
+<p>Example: 
 <code >System.Windows.Forms.PropertyManager</code>. It is much easier to use its parametric constructor than to write a 
 <code >ITypeContainer</code> for this type.</p>
 
-<h3><a  name="mozTocId642133"></a>CanTestDefaultConstructor (new in version 2.14.3)</h3>
+<h3><a id="mozTocId642133"></a>CanTestDefaultConstructor</h3>
 
-<p>UniversalSerializer usually tries to build one instance per type using its default constructor (when available). The problem is some types should not be constructed outside deserialization, for example when their constructor increments a static counter. This filter lets UniversalSerializer avoid this construction test.</p>
+<p>UniversalSerializer usually tries to build one instance per type using its default constructor (when available). The problem is some types should not be constructed outside deserialization, for example when their constructor increments a static counter.</p>
+<p>This filter prevents UniversalSerializer from testing this construction.</p>
 
-<h3><a  name="mozTocId205090"></a>DefaultConstructorTestCleaner (new in version 2.14.3)</h3>
+<h3><a id="mozTocId205090"></a>DefaultConstructorTestCleaner</h3>
 
-<p>UniversalSerializer usually tries to build one instance per type using its default constructor (when available). Some types, as System.Windows.Window, needs a cleaner to be called before instance destruction.<br>In the example of WPF Window, we have to call Close(), otherwise the application will not be closed correctly (it waits for all WPF windows to be closed).</p>
+<p>UniversalSerializer usually tries to build one instance per type using its default constructor (when available). Some types, as the WPF's System.Windows.Window, needs a cleaner to be called before instance destruction.<br>In the example of WPF Window, we have to call Window.Close(), otherwise the application will not be closed correctly (it will wait for all WPF windows to be closed).</p>
 
-<h2><a name="mozTocId398858"></a>Making a set of filters [ Modified on version 3.14.5 ]</h2>
+<h2><a id="mozTocId398858"></a>Making a set of filters</h2>
 
 <p class="remarque">Please note the filter mechanism is totally independent from the 
-containers (<code>ITypeContainer</code>). They can be used together, or separately.</p>
+containers (<code>ITypeContainer</code>). They can be used together, or separately.<br>When a type has a container, its serialization will not be affected by any filter (they are ignored).</p>
 
 <p>Let&#39;s take an example:</p>
 
-<pre lang="cs" class="code_source">
-public class ThisClassNeedsFilters
-{
-  public ShouldNotBeSerialized Useless;
-  private int Integer;
-  public string Value { get { return this.Integer.ToString(); } }
+<pre class="code_source">
+<span style="color:#2239a8; font-weight:bold">public class</span> ThisClassNeedsFilters
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>public</span> ShouldNotBeSerialized Useless<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>private int</span> Integer<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>public string</span> Value { get { return this.Integer.ToString(); } <span style="color:#000000">}</span>
 
-  public ThisClassNeedsFilters()
-  {
-  }
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>public</span> <span style="color:#a8227b">ThisClassNeedsFilters</span><span style="color:#000000">()</span>
+<span style="color:#000000"><span lang="fr">	</span>{</span>
+<span style="color:#000000"><span lang="fr">	</span>}</span>
 
-  public ThisClassNeedsFilters(int a)
-  {
-    this.Integer = a;
-    this.Useless = new ShouldNotBeSerialized();
-  }
-}
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>public</span> <span style="color:#a8227b">ThisClassNeedsFilters</span><span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">int</span> a<span style="color:#000000">)</span>
+<span style="color:#000000"><span lang="fr">	</span>{</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">		</span>this</span><span style="color:#000000">.</span>Integer <span style="color:#000000">=</span> a<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">		</span>this</span><span style="color:#000000">.</span>Useless <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">ShouldNotBeSerialized</span><span style="color:#000000">();</span>
+<span style="color:#000000"><span lang="fr">	</span>}</span>
+<span style="color:#000000">}</span>
 
-public class ShouldNotBeSerialized
-{
-}</pre>
+<span style="color:#2239a8; font-weight:bold">public class</span> ShouldNotBeSerialized
+<span style="color:#000000">{</span>
+<span style="color:#000000">}</span>
+</pre>
 
 <p>This class (<code>ThisClassNeedsFilters</code>) have some problems:</p>
 
 <ul>
-	<li>It contains a <code>ShouldNotBeSerialized</code>. Let&#39;s imagine the class <code>ShouldNotBeSerialized</code> has to be avoided for some reasons, I don&#39;t know why, maybe it is poisoned!</li>
-	<li>The field <code>Integer</code> is not public and therefore is ignored by the serializer(s).</li>
-	<li>Even the constructor parameter name is different from any field or property. Anyway the serializer does not need this constructor, as it already has a default constructor.</li>
+<li>It contains a <code>ShouldNotBeSerialized</code>. Let&#39;s imagine the class <code>ShouldNotBeSerialized</code> has to be avoided for some reasons, I don&#39;t know why, maybe it is poisoned!</li>
+<li>The field <code>Integer</code> is not public and therefore is ignored by the serializer(s).</li>
+<li>Even the constructor parameter name is different from any field or property. Anyway the serializer does not need this constructor, as it already has a default constructor.</li>
 </ul>
 
 <p>To overcome these problems, we write a custom set of filters:</p>
 
-<pre lang="cs" class="code_source">
-/// &lt;summary&gt;
-/// Tells the serializer to add some certain private fields to store the type.
-/// &lt;/summary&gt;
-static FieldInfo[] MyAdditionalPrivateFieldsAdder(Type t)
-{
-    if (Tools.TypeIs(t, typeof(ThisClassNeedsFilters)))
-        return new FieldInfo[] { Tools.FieldInfoFromName(t, &quot;Integer&quot;) };
-    return null;
-}
-/// &lt;summary&gt;
-/// Returns &#39;false&#39; if this type should not be serialized at all.
-/// That will let the default value created by the constructor of its container class/structure.
-/// &lt;/summary&gt;
-static bool MyTypeSerializationValidator(Type t)
-{
-    return ! Tools.TypeIs(t, typeof(ShouldNotBeSerialized));
-}</pre>
+<pre class="code_source">
+<span style="color:#558817">/// &lt;summary&gt;</span>
+<span style="color:#558817">/// Tells the serializer to add some certain private fields to store the type.</span>
+<span style="color:#558817">/// &lt;/summary&gt;</span>
+<span style="color:#2239a8; font-weight:bold">static</span> FieldInfo<span style="color:#000000">[]</span> <span style="color:#a8227b">MyAdditionalPrivateFieldsAdder</span><span style="color:#000000">(</span>Type t<span style="color:#000000">)</span>
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>if</span> <span style="color:#000000">(</span>Tools<span style="color:#000000">.</span><span style="color:#a8227b">TypeIs</span><span style="color:#000000">(</span>t<span style="color:#000000">,</span> <span style="color:#2239a8; font-weight:bold">typeof</span><span style="color:#000000">(</span>ThisClassNeedsFilters<span style="color:#000000">)))</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">		</span>return new</span> FieldInfo<span style="color:#000000">[]</span> { Tools.FieldInfoFromName(t, &quot;Integer&quot;) }<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>return null</span><span style="color:#000000">;</span>
+<span style="color:#000000">}</span>
+<span style="color:#558817">/// &lt;summary&gt;</span>
+<span style="color:#558817">/// Returns &apos;false&apos; if this type should not be serialized at all.</span>
+<span style="color:#558817">/// That will let the default value created by the constructor of its container class/structure.</span>
+<span style="color:#558817">/// &lt;/summary&gt;</span>
+<span style="color:#2239a8; font-weight:bold">static bool</span> <span style="color:#a8227b">MyTypeSerializationValidator</span><span style="color:#000000">(</span>Type t<span style="color:#000000">)</span>
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>return</span> <span style="color:#000000">!</span> Tools<span style="color:#000000">.</span><span style="color:#a8227b">TypeIs</span><span style="color:#000000">(</span>t<span style="color:#000000">,</span> <span style="color:#2239a8; font-weight:bold">typeof</span><span style="color:#000000">(</span>ShouldNotBeSerialized<span style="color:#000000">));</span>
+<span style="color:#000000">}</span>
+</pre>
 
 <p>They are self-explanatory:</p>
 
 <ul>
-	<li>
-	<pre lang="cs" class="code_source">
-FieldInfo[] MyAdditionalPrivateFieldsAdder(Type t)</pre>
-	makes the serializer add a private field (<code>Integer</code>) to every source instance of this type (<code>ThisClassNeedsFilters</code>).</li>
-	<li>
-	<pre lang="cs" class="code_source">
-bool MyTypeSerializationValidator(Type t)</pre>
-	prevents the serializer from storing any instance of this type (<code>ShouldNotBeSerialized</code>). Consequently, any instance of <code>ThisClassNeedsFilters</code> will not set the <code>Useless</code> field.</li>
+<li>
+<pre class="code_source">
+FieldInfo<span style="color:#000000">[]</span> <span style="color:#a8227b">MyAdditionalPrivateFieldsAdder</span><span style="color:#000000">(</span>Type t<span style="color:#000000">)</span>
+</pre>
+makes the serializer add a private field (<code>Integer</code>) to every source instance of this type (<code>ThisClassNeedsFilters</code>).</li>
+<li>
+<pre class="code_source">
+<span style="color:#2239a8; font-weight:bold">bool</span> <span style="color:#a8227b">MyTypeSerializationValidator</span><span style="color:#000000">(</span>Type t<span style="color:#000000">)</span>
+</pre>
+It
+prevents the serializer from storing any instance of this type (<code>ShouldNotBeSerialized</code>). Consequently, any instance of <code>ThisClassNeedsFilters</code> will not set the <code>Useless</code> field.</li>
 </ul>
 
-<p><strong>[ New on Version 3.14.5 ]</strong> We declare the CustomModifiers :</p>
+<p>We declare the CustomModifiers :</p>
 
-<pre lang="cs" class="code_source">
-public class CustomFiltersTestModifier : CustomModifiers
-{
-  public CustomFiltersTestModifier()
-    : base(FilterSets : new FilterSet[] {
-      new FilterSet() { 
-        AdditionalPrivateFieldsAdder=MyAdditionalPrivateFieldsAdder, 
-        TypeSerializationValidator=MyTypeSerializationValidator } })
-  {        
-  }
-}</pre>
+<pre class="code_source">
+<span style="color:#2239a8; font-weight:bold">public class</span> CustomFiltersTestModifier <span style="color:#000000">:</span> CustomModifiers
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold">public</span> <span style="color:#a8227b">CustomFiltersTestModifier</span><span style="color:#000000">()</span>
+<span style="color:#000000"><span lang="fr">	</span>:</span> <span style="color:#2239a8; font-weight:bold">base</span><span style="color:#000000">(</span>FilterSets <span style="color:#000000">:</span> <span style="color:#2239a8; font-weight:bold">new</span> FilterSet<span style="color:#000000">[] {</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">		</span>new</span> <span style="color:#a8227b">FilterSet</span><span style="color:#000000">() {</span> 
+<span lang="fr">			</span>AdditionalPrivateFieldsAdder<span style="color:#000000">=</span>MyAdditionalPrivateFieldsAdder<span style="color:#000000">,</span> 
+<span lang="fr">			</span>TypeSerializationValidator<span style="color:#000000">=</span>MyTypeSerializationValidator <span style="color:#000000">} })</span>
+<span style="color:#000000"><span lang="fr">	</span>{</span>        
+<span style="color:#000000"><span lang="fr">	</span>}</span>
+<span style="color:#000000">}</span>
+</pre>
 
-<p>This declaration will automatically be found by the deserializer. [ New in version 3.14.5 ]</p>
+<p>This declaration will automatically be found by the deserializer.</p>
 
-<p>Now we serialize it: [ Simplified on Version 3.14.5 ]</p>
+<p>Now we serialize it:</p>
 
-<pre lang="cs" class="code_source">
-/* This example needs custom filters.
-Normally, this class can be serialized but with wrong fields.
-Thanks to these filters, we can serialize the class appropriately.
- */
+<pre class="code_source">
+<span style="color:#558817">/* This example needs custom filters.</span>
+<span style="color:#558817">Normally, this class can be serialized but with wrong fields.</span>
+<span style="color:#558817">Thanks to these filters, we can serialize the class appropriately.</span>
+<span style="color:#558817"> */</span>
 
-using (MemoryStream ms = new MemoryStream())
-{
-  var p = new Parameters() { Stream = ms };
-  var ser = new UniversalSerializer(p);
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span>MemoryStream ms <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">MemoryStream</span><span style="color:#000000">())</span>
+<span style="color:#000000">{</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> p <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">Parameters</span><span style="color:#000000">()</span> { Stream = ms }<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> ser <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">UniversalSerializer</span><span style="color:#000000">(</span>p<span style="color:#000000">);</span>
 
-  var data = new ThisClassNeedsFilters(123);
-  ser.Serialize(data);
-  var data2 = ser.Deserialize&lt;ThisClassNeedsFilters&gt;();
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> data <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">ThisClassNeedsFilters</span><span style="color:#000000">(</span><span style="color:#a8660d">123</span><span style="color:#000000">);</span>
+<span lang="fr">	</span>ser<span style="color:#000000">.</span><span style="color:#a8227b">Serialize</span><span style="color:#000000">(</span>data<span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> data2 <span style="color:#000000">=</span> ser<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>ThisClassNeedsFilters<span style="color:#000000">&gt;();</span>
 
-  bool ok = data2.Value == &quot;123&quot; &amp;&amp; data2.Useless == null;
-}</pre>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>bool</span> ok <span style="color:#000000">=</span> data2<span style="color:#000000">.</span>Value <span style="color:#000000">==</span> <span style="color:#a8660d">&quot;123&quot;</span> <span style="color:#000000">&amp;&amp;</span> data2<span style="color:#000000">.</span>Useless <span style="color:#000000">==</span> <span style="color:#2239a8; font-weight:bold">null</span><span style="color:#000000">;</span>
+<span style="color:#000000">}</span>
+</pre>
 
-<h2><a  name="mozTocId883671"></a>Tool help functions</h2>
+<h2><a id="mozTocId883671"></a>Tool help functions</h2>
 
-<p>The Tools static class offers some help:</p>
+<p>The static class <code>Tools</code> offers some help:</p>
 
 <ul>
-	<li>
-	<pre lang="cs" class="code_source">
-Type Tools.TypeIs(Type ObjectType, Type SearchedType)</pre>
-	It is equivalent to the C#&#39;s &#39;<code>is</code>&#39;, but for Types. For example, <code>TypeIs((typeof(List&lt;int&gt;)</code>, <code>typeof(List&lt;&gt;))</code> returns <code>true</code>.</li>
-	<li>
-	<pre lang="cs" class="code_source">
-Type DerivedType(Type ObjectType, Type SearchedType)</pre>
+<li>
+<pre class="code_source">
+Type Tools<span style="color:#000000">.</span><span style="color:#a8227b">TypeIs</span><span style="color:#000000">(</span>Type ObjectType<span style="color:#000000">,</span> Type SearchedType<span style="color:#000000">)</span>
+</pre>
+It is similar to the C#&#39;s &#39;<code>is</code>&#39;, but for Types.<br>For example, <code>TypeIs((typeof(List&lt;int&gt;)</code>, <code>typeof(List&lt;&gt;))</code> returns <code>true</code>.</li>
+<li>
+<pre class="code_source">
+Type <span style="color:#a8227b">Tools<span style="color: #000000">.</span>DerivedType</span><span style="color:#000000">(</span>Type ObjectType<span style="color:#000000">,</span> Type SearchedType<span style="color:#000000">)</span>
+</pre>
 
-	<p>Returns the type corresponding to <code>SearchedType</code> that is inherited by <code>ObjectType</code>. For example, <code>DerivedType(typeof(MyList), typeof(List&lt;&gt;))</code> returns <code>typeof(List&lt;int&gt;)</code> when <code>MyList</code> is</p>
-
-	<pre lang="cs" class="code_source">
-MyList: List&lt;int&gt; { }.</pre>
-	</li>
-	<li>
-	<pre lang="cs" class="code_source">
-FieldInfo FieldInfoFromName(Type t, string name)</pre>
-	Returns the <code>FieldInfo</code> of the named field of the type.</li>
+<p>Returns the type corresponding to <code>SearchedType</code> that is inherited by <code>ObjectType</code>.</p>
+<p>For example, <code>DerivedType(typeof(MyList), typeof(List&lt;&gt;))</code> returns <code>typeof(List&lt;int&gt;)</code> when <code>MyList</code> is<br><code>class <span style="color:#a89222; font-weight:bold">MyList</span><span style="color:#000000">:</span> List<span style="color:#000000">&lt;</span><span style="color:#2239a8; font-weight:bold">int</span><span style="color:#000000">&gt;</span> { }</code></p>
+</li>
+<li>
+<pre class="code_source">
+FieldInfo <span style="color:#a8227b">Tools<span style="color: #000000">.</span>FieldInfoFromName</span><span style="color:#000000">(</span>Type t<span style="color:#000000">,</span> <span style="color:#2239a8; font-weight:bold">string</span> name<span style="color:#000000">)</span>
+</pre>
+Returns the <code>FieldInfo</code> of the named field of the type.</li>
 </ul>
 
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
-</body></html>
+</div>
+
+</body>
+
+</html>

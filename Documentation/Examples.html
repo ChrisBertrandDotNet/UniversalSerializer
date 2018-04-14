@@ -1,106 +1,122 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html dir="ltr" lang="en"><head>
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
 
-<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Examples</title>
-  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css">
-</head><body>
-<h1>UniversalSerializer - Examples<br>
-</h1>
-<div class="table_des_matieres">
-<ul  id="mozToc"><!--mozToc h2 2 h3 3 h4 4 h5 5 h6 6--><li><a href="#mozTocId795666">Simple examples</a>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Examples</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>Examples</h1>
+<div role="navigation">
+<ul  id="mozToc"><li><a href="#mozTocId795666">Simple examples</a>
 <ul><li><a href="#Example with a file name">Example with a file name</a></li>
-	<li><a href="#mozTocId675539">Example with a stream</a></li>
-<li><a href="#mozTocId797405">Example to XML</a></li>
-	<li><a href="#Example_to_JSON">Example to <span>JSON</span></a></li>
+<li><a href="#mozTocId675539">Example with a stream</a></li>
+<li><a href="#mozTocId797405">Example serializing to XML</a></li>
+<li><a href="#Example_to_JSON">Example serializing to <span>JSON</span></a></li>
 <li><a href="#mozTocId766125">Example for WPF </a></li>
 <li><a href="#mozTocId257446">Example for Windows Forms</a></li>
 </ul>
-	</li>
-	</ul>
+</li>
+</ul>
 </div>
-<p>
-</p><h2><a  name="mozTocId795666"></a>Simple examples</h2>
-<h3><a name="Example with a file name"></a>Example with a file name<br>
+<h2><a id="mozTocId795666"></a>Simple examples</h2>
+<h3><a id="Example with a file name"></a>Example with a file name<br>
 </h3>
 
 
-<pre lang="cs">
-var data = new Hashtable(); data.Add(0, 1);
-using (var s = new UniversalSerializer(@&quot;d:\temp\serialized.bin&quot;))
-{
-  s.Serialize(data);
-  var data2 = s.Deserialize&lt;Hashtable&gt;();
-}</pre>
+<pre>
+var <span style="color:#2239a8; font-weight:bold">data</span> <span style="color:#000000">=</span> new Hashtable<span style="color:#000000">();</span> <span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">.</span><span style="color:#2239a8; font-weight:bold">Add</span><span style="color:#000000">(</span><span style="color:#a8660d">0</span><span style="color:#000000">,</span> <span style="color:#a8660d">1</span><span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span>var s <span style="color:#000000">=</span> new UniversalSerializer<span style="color:#000000">(</span>&#64;&quot;c<span style="color:#000000">:</span><span style="color:#a80d9e">\t</span>emp\serialized<span style="color:#000000">.</span>uniser&quot;<span style="color:#000000">))</span>
+<span style="color:#000000">{</span>
+s<span style="color:#000000">.</span>Serialize<span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">);</span>
+var data2 <span style="color:#000000">=</span> s<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>Hashtable<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span>
+</pre>
 
 <p>That is that simple!</p>
 
-<h3 ><a name="mozTocId675539"></a>Example with a stream</h3>
+<h3 ><a id="mozTocId675539"></a>Example with a stream</h3>
 
-<pre lang="cs">
-var data = new Hashtable(); data.Add(0, 1);
-using (var ms = new MemoryStream())
-{ 
-   var s = new UniversalSerializer(ms); 
-   s.Serialize(data);  
-   var data2 = s.Deserialize&lt;Hashtable&gt;();
-}</pre>
+<pre>
+<span style="color:#2239a8; font-weight:bold">var</span> data <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">Hashtable</span><span style="color:#000000">();</span> data<span style="color:#000000">.</span><span style="color:#a8227b">Add</span><span style="color:#000000">(</span><span style="color:#a8660d">0</span><span style="color:#000000">,</span> <span style="color:#a8660d">1</span><span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">var</span> ms <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">MemoryStream</span><span style="color:#000000">())</span>
+<span style="color:#000000">{</span> 
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> s <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">UniversalSerializer</span><span style="color:#000000">(</span>ms<span style="color:#000000">);</span> 
+<span lang="fr">	</span>s<span style="color:#000000">.</span><span style="color:#a8227b">Serialize</span><span style="color:#000000">(</span>data<span style="color:#000000">);</span>  
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> data2 <span style="color:#000000">=</span> s<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>Hashtable<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span></pre>
 
-<h3 ><a name="mozTocId797405"></a>Example to XML</h3>
+<h3 ><a id="mozTocId797405"></a>Example serializing to XML</h3>
 
-<pre lang="cs">
-var data = new Hashtable(); data.Add(0, 1);
-using (FileStream fs = new FileStream(&quot;TestXmlFormatter.xml&quot;, FileMode.Create))
-{
-  Parameters parameters = new Parameters()
-  { 
-    Stream = fs, <strong>SerializerFormatter = SerializerFormatters.XmlSerializationFormatter</strong> 
-  };
-  UniversalSerializer ser = new UniversalSerializer(parameters);
+<pre>
+var <span style="color:#2239a8; font-weight:bold">data</span> <span style="color:#000000">=</span> new Hashtable<span style="color:#000000">();</span> <span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">.</span><span style="color:#2239a8; font-weight:bold">Add</span><span style="color:#000000">(</span><span style="color:#a8660d">0</span><span style="color:#000000">,</span> <span style="color:#a8660d">1</span><span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span>var ser <span style="color:#000000">=</span> new UniversalSerializer<span style="color:#000000">(</span>&quot;TestXmlFormatter<span style="color:#000000">.</span>uniser<span style="color:#000000">.</span>xml&quot;<span style="color:#000000">,</span> SerializerFormatters<span style="color:#000000">.</span>XmlSerializationFormatter<span style="color:#000000">))</span>
+<span style="color:#000000">{</span>
+ser<span style="color:#000000">.</span>Serialize<span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">);</span>
+var deserialized <span style="color:#000000">=</span> ser<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>Hashtable<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span>
+</pre>
 
-  ser.Serialize(data);
-  var deserialized = ser.Deserialize&lt;Hashtable&gt;();
-} </pre>
+<h3 ><a id="Example_to_JSON"></a>Example serializing to <span>JSON</span></h3>
 
-<h3 ><a name="Example_to_JSON"></a>Example to <span>JSON</span></h3>
-
-<pre lang="cs">
-var data = new Hashtable(); data.Add(0, 1);
-using (FileStream fs = new FileStream(&quot;TestXmlFormatter.xml&quot;, FileMode.Create))
-{
-  Parameters parameters = new Parameters()
-  { 
-    Stream = fs, <strong>SerializerFormatter = SerializerFormatters.JSONSerializationFormatter</strong>
-  };
-  UniversalSerializer ser = new UniversalSerializer(parameters);
-
-  ser.Serialize(data);
-  var deserialized = ser.Deserialize&lt;Hashtable&gt;();
-} </pre>
+<pre>
+var <span style="color:#2239a8; font-weight:bold">data</span> <span style="color:#000000">=</span> new Hashtable<span style="color:#000000">();</span> <span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">.</span><span style="color:#2239a8; font-weight:bold">Add</span><span style="color:#000000">(</span><span style="color:#a8660d">0</span><span style="color:#000000">,</span> <span style="color:#a8660d">1</span><span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span>var ser <span style="color:#000000">=</span> new UniversalSerializer<span style="color:#000000">(</span>&quot;TestXmlFormatter<span style="color:#000000">.</span>uniser<span style="color:#000000">.</span>json&quot;<span style="color:#000000">,</span> SerializerFormatters<span style="color:#000000">.</span>JSONSerializationFormatter<span style="color:#000000">))</span>
+<span style="color:#000000">{</span>
+ser<span style="color:#000000">.</span>Serialize<span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">);</span>
+var deserialized <span style="color:#000000">=</span> ser<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>Hashtable<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span>
+</pre>
 
 <h3 >Example for WPF</h3>
 
 <p>There is a specialized DLL for WPF, that manages more WPF types:</p>
 
-<pre lang="cs">
-var data = new System.Windows.Window() { Title = &quot;Hello!&quot; };
-using (var s = new <strong>UniversalSerializerWPF</strong>(@&quot;d:\temp\serialized.bin&quot;))
-{
-  s.Serialize(data);
-  var data2 = s.Deserialize&lt;System.Windows.Window&gt;();
-}</pre>
+<pre><span style="color:#2239a8; font-weight:bold">var</span> data <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> System<span style="color:#000000">.</span>Windows<span style="color:#000000">.</span><span style="color:#a8227b">Window</span><span style="color:#000000">()</span> { Title = &quot;Hello!&quot; }<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">var</span> s <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">UniversalSerializerWPF</span><span style="color:#000000">(&#64;</span><span style="color:#a8660d">&quot;<span lang="fr">c</span>:\temp\serialized.uniser&quot;</span><span style="color:#000000">))</span>
+<span style="color:#000000">{</span>
+<span lang="fr">	</span>s<span style="color:#000000">.</span><span style="color:#a8227b">Serialize</span><span style="color:#000000">(</span>data<span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> data2 <span style="color:#000000">=</span> s<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>System<span style="color:#000000">.</span>Windows<span style="color:#000000">.</span>Window<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span>
+</pre>
 
-<h3 ><a name="mozTocId257446"></a>Example for Windows Forms</h3>
+<h3 ><a id="mozTocId257446"></a>Example for Windows Forms</h3>
 
 <p>There is a specialized DLL for Windows Forms, that manages more Windows Forms types:</p>
 
-<pre lang="cs">
-var data = new System.Windows.Forms.Form() { Text = &quot;Hello!&quot; };
-using (var s = new <strong>UniversalSerializerWinForm</strong>(@&quot;d:\temp\serialized.bin&quot;))
-{
-  s.Serialize(data);
-  var data2 = s.Deserialize&lt;System.Windows.Forms.Form&gt;();
-}</pre>
+<pre><span style="color:#2239a8; font-weight:bold">var</span> data <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> System<span style="color:#000000">.</span>Windows<span style="color:#000000">.</span>Forms<span style="color:#000000">.</span><span style="color:#a8227b">Form</span><span style="color:#000000">()</span> { Text = &quot;Hello!&quot; }<span style="color:#000000">;</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">var</span> s <span style="color:#000000">=</span> <span style="color:#2239a8; font-weight:bold">new</span> <span style="color:#a8227b">UniversalSerializerWinForm</span><span style="color:#000000">(&#64;</span><span style="color:#a8660d">&quot;<span lang="fr">c</span>:\temp\serialized.uniser&quot;</span><span style="color:#000000">))</span>
+<span style="color:#000000">{</span>
+<span lang="fr">	</span>s<span style="color:#000000">.</span><span style="color:#a8227b">Serialize</span><span style="color:#000000">(</span>data<span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold"><span lang="fr">	</span>var</span> data2 <span style="color:#000000">=</span> s<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>System<span style="color:#000000">.</span>Windows<span style="color:#000000">.</span>Forms<span style="color:#000000">.</span>Form<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span>
+</pre>
 
 <p></p>
 
-</body></html>
+</div>
+
+</body>
+
+</html>

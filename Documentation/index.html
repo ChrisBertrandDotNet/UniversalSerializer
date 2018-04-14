@@ -1,28 +1,219 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html dir="ltr" lang="en"><head>
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
 
-<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Documentation</title>
-  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css"></head><body>
-<h1><a  name="mozTocId901630"></a>UniversalSerializer - Documentation</h1>
-<div class="table_des_matieres">
-	<ul  id="mozToc">
-		<li>
-		<a href="Presentation.html">Presentation</a></li>
-		<li>
-		<a href="Examples.html">Examples</a></li>
-		<li>
-		<a href="Solutions%20and%20projects.html">Solutions and projects (DLLs)</a></li>
-		<li>
-		<a href="Good%20practices.html">Good practices</a></li>
-		<li>
-		<a href="Attributes.html">Attributes</a></li>
-		<li>
-		<a href="Containers.html">Containers</a></li>
-		<li>
-		<a href="Filters.html">Filters</a></li>
-		<li>
-		<a href="Errors.html">Errors on execution</a></li>
-	</ul>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Presentation</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
 </div>
+<div id="page_content" role="main">
+<h1>Presentation of UniversalSerializer</h1>
+<p><a href="http://universalserializer.com/index.html">UniversalSerializer</a> is a free <a href="license.html">open-source</a> advanced serializer for .NET and .NET Core.<br>It has been designed to be able to serialize very complex types with ease (as the WPF's Window class for example).</p>
+<p>It can run on Windows, Linux, Android and probably macOS<a href="#Apple"><sup>1</sup></a> and iOS<a href="#Apple"><sup>1</sup></a>.<br>&nbsp;</p>
+<div role="navigation">
+<ul id="mozToc">
+<li><a href="#characteristics">Some characteristics</a></li>
+<li><a href="#Sources">Sources</a></li>
+<li><a href="#Article">Technical article</a></li>
+<li><a href="#mozTocId208519">The DLLs</a></li>
+<li><a href="#example">A code example</a></li>
+</ul>
+</div>
+<h2><a id="characteristics"></a>Some characteristics</h2>
+<ul class="liste_compacte">
+<li>No need to add attributes nor interfaces to the types (classes &amp; structures).</li>
+<li>Optional mechanisms let you serialize types that would not serialize normally:<br>encapsulation in <a href="containers.html">Containers</a>, <a href="filters.html">Filters</a>, and <a href="attributes.html">additionnal attributes</a>.</li>	
+<li>A class instance can be referenced multiple times (it is not duplicated).</li>
+<li>Circular references are allowed.</li>
+<li>Existing serialization or transcoding mechanisms are reused.<br>Currently: <code>[Serializable]</code>, <code>ISerializable</code>, <code>[ValueSerializer]</code>, and <code>[TypeConverter]</code>.</li>
+<li>Types with no default constructor are allowed, if a parametric constructor can be found (it is automatic).</li>
+<li>Not-generic <code>ICollection</code> classes can be serialized if an Add or an Insert method can be found (private or public functions are found automatically).</li>
+<li>I added specialized libraries that let you serialize types of WPF and Windows Forms.</li>
+</ul>
+<h2><a id="Sources"></a>Sources</h2>
+<p>The sources are available on <a href="https://github.com/ChrisBertrandDotNet/UniversalSerializer">GitHub</a>.</p>
+<h2><a id="Article"></a>Technical article</h2>
+<p>You can read <a href="http://www.codeproject.com/Articles/620154/UniversalSerializer">the article</a> I wrote on CodeProject.<br>It presents UniversalSerializer in details, and explains its origin and some of the techniques I introduced for it.</p>
+<h2>The <a id="mozTocId208519" class="mozTocH2"></a>DLLs</h2>
+<p>The available libraries are:
+</p>
+<table style="width: 100%">
+<tr>
+<td class="table_header">Library platform</td>
+<td class="table_header" colspan="5">Operating systems</td>
+<td class="table_header" colspan="3">File formats</td>
+</tr>
+<tr>
+<td class="table_header">&nbsp;</td>
+<td class="table_header">Windows</td>
+<td class="table_header">macOS<a href="#Apple"><sup>1</sup></a></td>
+<td class="table_header">Linux</td>
+<td class="table_header">Android</td>
+<td class="table_header">iOS<a href="#Apple"><sup>1</sup></a></td>
+<td class="table_header">Binary</td>
+<td class="table_header">XML</td>
+<td class="table_header">json</td>
+</tr>
+<tr>
+<td>.NET 3.5</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>.NET 4.0</td>
+<td>yes</td>
+<td>Mono</td>
+<td>Mono</td>
+<td>Xamarin</td>
+<td>Xamarin</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>.NET 4.5</td>
+<td>yes</td>
+<td>Mono</td>
+<td>Mono</td>
+<td>Xamarin</td>
+<td>Xamarin</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>.NET Core 2</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>.NET Standard 2</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>Xamarin</td>
+<td>Xamarin</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Xamarin</td>
+<td>&nbsp;</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Silverlight</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>UWP (Universal Windows)</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Windows Forms on .NET 3.5</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Windows Forms on .NET 4.0</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>WPF</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+</table>
+<p>And a test application under Xamarin Forms (using the .NET Standard library), on Windows, Android and iOS.</p>
+<h2><a id="example"></a>A code example</h2>
+
+
+<pre>
+var <span style="color:#2239a8; font-weight:bold">data</span> <span style="color:#000000">=</span> new Hashtable<span style="color:#000000">();</span> <span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">.</span><span style="color:#2239a8; font-weight:bold">Add</span><span style="color:#000000">(</span><span style="color:#a8660d">0</span><span style="color:#000000">,</span> <span style="color:#a8660d">1</span><span style="color:#000000">);</span>
+<span style="color:#2239a8; font-weight:bold">using</span> <span style="color:#000000">(</span>var s <span style="color:#000000">=</span> new UniversalSerializer<span style="color:#000000">(</span>&#64;&quot;c<span style="color:#000000">:</span><span style="color:#a80d9e">\t</span>emp\serialized<span style="color:#000000">.</span>uniser&quot;<span style="color:#000000">))</span>
+<span style="color:#000000">{</span>
+s<span style="color:#000000">.</span>Serialize<span style="color:#000000">(</span><span style="color:#2239a8; font-weight:bold">data</span><span style="color:#000000">);</span>
+var data2 <span style="color:#000000">=</span> s<span style="color:#000000">.</span>Deserialize<span style="color:#000000">&lt;</span>Hashtable<span style="color:#000000">&gt;();</span>
+<span style="color:#000000">}</span></pre>
+
 <p>&nbsp;</p>
-</body></html>
+<p>&nbsp;</p>
+<p>(1) <a id="Apple"></a>Apple: Some libraries are compiled for macOS and iOS. But I did not test them on these systems (I don't own this hardware).</p>
+<p>&nbsp;</p>
+</div>
+
+</body>
+
+</html>

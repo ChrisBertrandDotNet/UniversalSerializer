@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Authors>Christophe Bertrand</Authors>
+    <Company>Christophe Bertrand</Company>
+    <Copyright>Copyright © Christophe Bertrand</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;NO_WPF_TESTS</DefineConstants>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NO_WPF_TESTS</DefineConstants>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Common tests\ConsoleTester.cs" Link="ConsoleTester.cs" />
+    <Compile Include="..\..\..\Common tests\Tests.cs" Link="Tests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Common tests\ExternalModifiers NET Core\bin\Debug\netcoreapp2.0\ExternalModifiers.dll" Link="ExternalModifiers.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\..\Common tests\TestFiles\Serialized2.0.json" Link="TestFiles\Serialized2.0.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\..\Common tests\TestFiles\Serialized2.0.xml" Link="TestFiles\Serialized2.0.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common tests\TestTypes NET Core\TestTypes NET Core.csproj" />
+    <ProjectReference Include="..\UniversalSerializer 3 for NET Core\UniversalSerializer 3 for NET Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Common tests\TestFiles\Serialized2.0.data" Link="TestFiles\Serialized2.0.data">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

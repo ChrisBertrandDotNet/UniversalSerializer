@@ -1,0 +1,4 @@
+﻿
+ExternalModifiers.dll is copied to the directory of this Tester.
+That is different from referencing the DLL.
+In fact, the classes included in this library will be found dynamically by UniversalSerializer.

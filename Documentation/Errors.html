@@ -1,206 +1,229 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html dir="ltr" lang="en"><head>
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
 
-<meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>UniversalSerializer - Errors</title>
-  <meta content="Christophe Bertrand" name="author"><link rel="stylesheet" href="styles.css" type="text/css">
-</head><body>
-<h1>UniversalSerializer - E<span>rror</span>s<br>
-</h1>
-<div class="table_des_matieres">
-<ul  id="mozToc"><!--mozToc h2 2 h3 3 h4 4 h5 5 h6 6--><li>
-	<a href="#Error categories">Error categories</a></li>
-	<li><span>
-	<a href="#Error messages in UniversalSerializer.dll">Error messages in UniversalSerializer.dll</a></span></li>
-	<li><span>
-	<a href="#Error messages in UniversalSerializerWPF.dll">Error messages in UniversalSerializerWPF.dll</a></span></li>
-	<li><span>
-	<a href="#Error messages in UniversalSerializerWinForm.dll">Error messages in UniversalSerializerWinForm.dll</a></span></li>
-	<li>'<a href="#Bugs">Bugs' or defects ?</a></li>
-	</ul>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - Errors on execution</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>E<span>rror</span>s on execution</h1>
+<div role="navigation">
+<ul  id="mozToc"><li>
+<a href="#Error categories">Error categories</a></li>
+<li><span>
+<a href="#Error messages in UniversalSerializer.dll">Error messages in UniversalSerializer 3 for NET x_y.dll</a></span></li>
+<li><span>
+<a href="#Error messages in UniversalSerializerWPF.dll">Error messages in UniversalSerializer 3 for WPF on NET 4_5.dll</a></span></li>
+<li><span>
+<a href="#Error messages in UniversalSerializerWinForm.dll">Error messages in UniversalSerializer 3 Windows Forms for NET x_y.dll</a></span></li>
+<li>'<a href="#Bugs">Bugs' or defects ?</a></li>
+</ul>
 </div>
 <p>
 <span>This is a description of most error messages that can be 
 displayed by each DLL.<br>These errors are displayed as Exceptions or logged in the 
 debugger ("Out" window).</span></p>
 <h2>
-<a name="Error categories"></a>Error categories</h2>
+<a id="Error categories"></a>Error categories</h2>
 <p>
 There are 3 very different kinds of error:</p>
 <ol>
-	<li><strong>You have designed a type</strong> in a way that makes it 
-	incompatible with UniversalSerializer.<br>Please read <a href="Good%20practices.html">Good practices</a>, that may 
-	help you in adapting your type.<br>If the type comes from an external DLL, 
-	please inform its author about UniversalSerializer.</li>
-	<li><strong>A framework (.NET, Silverlight, Mono, etc) type</strong> is not managed 
-	correctly.<br>It may require an adaptation in UniversalSerializer. I do not 
-	consider that as a true error, it only means a standard type needs more 
-	consideration (creation of <a href="Filters.html">filters</a> or
-	<a href="Containers.html">containers</a>).</li>
-	<li><strong>A general problem in UniversalSerializer.</strong><br>That will 
-	let me correct a problem that can potentially affect many programmers.</li>
+<li><code>You have designed a type</code> in a way that make it 
+incompatible with UniversalSerializer.<br>Please read <a href="Good_practices.html">Good practices</a>, that may 
+help you in adapting your type.<br>If the type comes from an external DLL, 
+please inform its author about UniversalSerializer.</li>
+<li><code>A framework (.NET, .NET Core, Silverlight, Mono, Xamarin etc) type</code> is not managed 
+correctly.<br>It may require an adaptation in UniversalSerializer. I do not 
+consider that as a true error, it only means a standard type needs more 
+consideration (that is creation of <a href="Filters.html">filters</a> or
+<a href="Containers.html">containers</a>).</li>
+<li><code>A general problem in UniversalSerializer.</code><br>That will 
+let me correct a problem that can potentially affect many programmers.</li>
 </ol>
 <h2><span>
-<a name="Error messages in UniversalSerializer.dll"></a>Error messages in 
-UniversalSerializer.dll</span></h2>
+<a id="Error messages in UniversalSerializer.dll"></a>Error messages in 
+UniversalSerializer 3 for NET x_y.dll</span></h2>
 
 
 <ol>
-	<li><span><strong>Error 1 : This version of UniversalSerializer can not 
-	manage multi-dimensional arrays.</strong><br>Multi-dimensional array and 
-	not-0-based array serializations are not implemented yet.</span></li>
-	<li><span><strong>Error 2 : Unknown CustomFormatter.</strong><br>An unknown custom 
-	Formatter for serialization is set in the Parameters. Internal formatters are Binary, Xml and 
-	JSON. Please note JSON is not available on some frameworks.</span></li>
-	<li><span><strong>Error 3 : Unknown CustomDeFormatter.</strong><br>An unknown 
-	custom Formatter for deserialization is set in the Parameters. Internal formatters are Binary, 
-	Xml and JSON. Please note JSON is not available on some frameworks.</span></li>
-	<li><span><strong>Error 4 : Can not set field '{0}'.'{1}' of type '{2}' 
-	with value '{3}' of type '{4}'</strong><br>On deserialization. Most 
-	probably a field was removed in a new version of the type. Please contact me 
-	if it is a .NET type (not a custom type).</span></li>
-	<li><span><strong>Error 5 : Can not set property '{0}'.'{1}' of type '{2}' 
-	with value '{3}' of type '{4}'</strong><br>On deserialization. Most 
-	probably a property was removed in a new version of the type. Please contact 
-	me if it is a .NET type (not a custom type).</span></li>
-	<li><span><strong>Error 6 : Type not found: \"{0}\".</strong><br>Can happen during 
-	deserialization. Maybe the original type is not available anymore, or has 
-	been renamed. Please contact me if it is a .NET type (not a custom type).</span></li>
-	<li><span><strong>Error 7 : Unknown file version.</strong><br>The file stream is 
-	damaged, or you try to deserialize using an obsolete version of the 
-	serializer's DLL.</span></li>
-	<li><span><strong>Error 8 : Type '{0}' (or one of its sub-data) is not 
-	serializable by BCL's BinaryFormatter. (suggestion: try to remove attribute 
-	[Serializable], or add an exploitable constructor).</strong><br>On 
-	serialization. The type has SerializableAttribute as an attribute, 
-	therefore UniversalSerializer uses the BCL BinaryFormatter's function to transcode the 
-	instance to a byte array. Unfortunately, this particular function does not work correctly.<br>
-	Usually, this is due to a missing or inadequate constructor.<br>If you can 
-	modify this type, please read this <a href="Good%20practices.html">document</a>.<br>If not, please 
-	contact me and/or add yourself the incorrect type to&nbsp; 
-	"CLRBinaryFormatterContainer._IsValidType()", in 
-	"CLRBinaryFormatterContainer.cs".</span></li>
-	<li><span><strong>Error 9 : data is not a Primitive type</strong><br>An 
-	internal error. Please contact me.</span></li>
-	<li><span><strong>Error 10 : Can not cast deserialized type \"{0}\" to 
-	wanted type \"{1}\".</strong><br>An internal error. After a successful 
-	deserialization, the type is wrong. Please contact me.</span></li>
-	<li><span><strong>Error 11 : Construction (instanciation) of type \"{0}\" 
-	caused an error: {1}.</strong><br>We called a constructor of the type, but that 
-	has 
-	raised an exception. Maybe the type has been modified between the serialization 
-	and the deserialization.</span></li>
-	<li><span><strong>Error 12 : No exploitable constructor for type {0}</strong><br>
-	On deserialization. UniversalSerializer does found an exploitable constructor. No default 
-	constructor, no parametric constructor.<br>If you can modify this type, 
-	please provide a parametric constructor that follows
-	<a href="Good%20practices.html#Constructor">these rules</a>.<br>If not, you 
-	can create a <a href="Containers.html">Container</a>. If it is a framework 
-	type, please contact me.</span></li>
-	<li><span><strong>Error 13 : Type {0} has no Add() method nor [Insert() 
-	method and Count get method], we can not set its items.</strong><br>The type 
-	is an enumeration, not a List. UniversalSerializer needs to be able to add 
-	items to this enumeration in order to deserialize it. It tried to find an 
-	adequate method, Add or Insert, but did not found one.<br>If you can modify 
-	this type, you can inherit it from IList&lt;&gt;. More information
-	<a href="Good%20practices.html#List">here</a>.</span></li>
-	<li><span><strong>Error 14 : Type \"{0}\" can not be constructed because 
-	this parameter's type has been disallowed by a filter: Parameter's 
-	name=\"{1}\", Corresponding field's name=\"{2}\", 
-	Type=\"{3}\".\n\tSuggestion: use a filter to disallow the main type, or to 
-	allow the parameter's type.</strong><br>If one of your
-	<a href="Filters.html">Filters</a> disallows a field and the parametric 
-	constructor needs this field, you have to take a decision: remove this 
-	filter or add a new constructor (if you can modify this type).<br>Same 
-	problem with the <a href="Attributes.html">Attributes</a>.</span></li>
-	<li><span><strong>Error 15 : The type '{0}' uses {1} as TypeConverter, but 
-	it does not convert to string correctly. Please investigate or contact the 
-	type's author.</strong><br>The type has TypeConverterAttribute as an attribute, 
-	therefore UniversalSerializer uses the provided special function to transcode the 
-	instance to a string. Unfortunately, this function does not work correctly.<br>
-	If you can modify this type, please remove this attribute.<br>If not, please 
-	contact me and/or add yourself the incorrect type to&nbsp; 
-	"CLRTypeConverterContainer._IsValidType()", in 
-	"CLRTypeConverterContainer.cs".</span></li>
-	<li><strong>Error 16 : The type '{0}' uses {1} as TypeConverter, but its 
-	transcoding type is unknown. Please investigate or contact the type's 
-	author.</strong><br><span>The type has TypeConverterAttribute as an attribute, 
-	therefore UniversalSerializer uses the provided function to transcode the 
-	instance to a string. Unfortunately, this function does not work correctly.<br>
-	If you can modify this type, please remove this attribute.<br>If not, please 
-	contact me and/or add yourself the incorrect type to&nbsp; 
-	"CLRTypeConverterContainer._IsValidType()", in 
-	"CLRTypeConverterContainer.cs".</span></li>
-	<li><strong>Error 17 : Listed assembly in stream can not be loaded: \"{0}\". 
-	Error={1}</strong><br>Occurs when deserializing a type which assembly can 
-	not be loaded.<br>Type's assemblies are listed in the stream on 
-	serialization and are necessary for deserialization.</li>
-	<li><strong>Error 18 : Warning: DateTimeKind has more than 4 items now. That 
-	will cause problems in DateTimes. See ToTicksAndKind().</strong><br>
-	Apparently, .NET's 
-	DateTimeKind implementation has changed. UniversalSerializer has to be 
-	adapted consequently.</li>
-	<li><strong>Error 19 : Type {0} can not be deserialized because of 1) an 
-	error in its Container and 2) a refused private field.</strong><br>Two 
-	cumulative reasons: The container of this type has been cancelled on 
-	serialization, probably because it was not able to contain this value. And, 
-	one (or more) private fields is (are) refused by a filter because of its 
-	type.<br><span>If you can modify this type, remove the container or 
-	attribute that cause this error, or remove the private field that is refused 
-	by the filters, or modify the filter.<br>If not, please contact me.</span></li>
-	<li><strong>Error 20 : (internal) Can not create a TypeManager for type {0}.</strong><br>
-	If it is under Silverlight, it may be due to another type, please see 
-	sub-exceptions until you find "Error 21".<br>If not Silverlight, that is an unexpected error, please inform me 
-	then I can study it.</li>
-	<li><strong>Error 21 : Silverlight does not allow creation of a TypeManager 
-	for private type {0}.</strong><br>There is a strong security protection in 
-	Silverlight that limits type access (usually: a private type in an another 
-	assembly).<br>This version of UniversalSerializer can not serialize this 
-	type.<br>Suggestion: for now, try to avoid this type or any type that 
-	contains it as a field or a property.<br>Sorry, I have no solution at this 
-	time.</li>
-	<li><strong>Error 22 : </strong><span lang="fr"><strong>Type {0} has a 
-	circular type in its constructor parameters in a form that is not supported 
-	by the deserializer.</strong><br>This type is constructed by a parametric 
-	constructor. One (or more) of its parameters is a circular type.<br>Two 
-	situations are not supported:<br>. When a not-indexed Enumerable contains 
-	this type, or<br>. when there is a Dictionary&lt;T1, T2&gt; where T1 and T2 are 
-	circular types.<br>Possible solutions:<br>. Add a default constructor to the 
-	main type.<br>. Use IList in place of not-indexed Enumerables.<br>. Avoid 
-	this kind of dictionary.<br>If you can not modify this type, please create a 
-	Container, or a Filter, or contact me.</span></li>
+<li><span><code>Error 1 : This version of UniversalSerializer can not 
+manage multi-dimensional arrays.</code><br>Multi-dimensional array and 
+not-0-based array serializations are not implemented yet.</span></li>
+<li><span><code>Error 2 : Unknown CustomFormatter.</code><br>An unknown custom 
+Formatter for serialization is set in the Parameters. Internal formatters are Binary, XML and 
+JSON. Please note JSON is not available on some frameworks.</span></li>
+<li><span><code>Error 3 : Unknown CustomDeFormatter.</code><br>An unknown 
+custom Formatter for deserialization is set in the Parameters. Internal formatters are Binary, 
+XML and JSON. Please note JSON is not available on some frameworks.</span></li>
+<li><span><code>Error 4 : Can not set field '{0}'.'{1}' of type '{2}' 
+with value '{3}' of type '{4}'</code><br>On deserialization. Most 
+probably a field was removed in a new version of the type. Please contact me 
+if it is a .NET type (not a custom type).</span></li>
+<li><span><code>Error 5 : Can not set property '{0}'.'{1}' of type '{2}' 
+with value '{3}' of type '{4}'</code><br>On deserialization. Most 
+probably a property was removed in a new version of the type. Please contact 
+me if it is a .NET type (not a custom type).</span></li>
+<li><span><code>Error 6 : Type not found: \"{0}\".</code><br>Can happen during 
+deserialization. Maybe the original type is not available anymore, or has 
+been renamed. Please contact me if it is a .NET type (not a custom type).</span></li>
+<li><span><code>Error 7 : Unknown file version.</code><br>The file stream is 
+damaged, or you try to deserialize using an obsolete version of the 
+serializer's DLL.</span></li>
+<li><span><code>Error 8 : Type '{0}' (or one of its sub-data) is not 
+serializable by BCL's BinaryFormatter. (suggestion: try to remove attribute 
+[Serializable], or add an exploitable constructor).</code><br>On 
+serialization. The type has SerializableAttribute as an attribute, 
+therefore UniversalSerializer uses the BCL BinaryFormatter's function to transcode the 
+instance to a byte array. Unfortunately, this particular function does not work correctly.<br>Usually, this is due to a missing or inadequate constructor.<br>If you can 
+modify this type, please read this <a href="Good_practices.html">document</a>.<br>If not, please 
+contact me and/or add yourself the incorrect type to&nbsp; 
+"CLRBinaryFormatterContainer._IsValidType()", in 
+"CLRBinaryFormatterContainer.cs".</span></li>
+<li><span><code>Error 9 : data is not a Primitive type</code><br>An 
+internal error. Please contact me.</span></li>
+<li><span><code>Error 10 : Can not cast deserialized type \"{0}\" to 
+wanted type \"{1}\".</code><br>An internal error. After a successful 
+deserialization, the type is wrong. Please contact me.</span></li>
+<li><span><code>Error 11 : Construction (instantiation) of type \"{0}\" 
+caused an error: {1}.</code><br>We called a constructor of the type, but that 
+has 
+raised an exception. Maybe the type has been modified between the serialization 
+and the deserialization.</span></li>
+<li><span><code>Error 12 : No exploitable constructor for type {0}</code><br>On deserialization. UniversalSerializer does found an exploitable constructor. No default 
+constructor, no parametric constructor.<br>If you can modify this type, 
+please provide a parametric constructor that follows
+<a href="Good_practices.html#Constructor">these rules</a>.<br>If not, you 
+can create a <a href="Containers.html">Container</a>. If it is a framework 
+type, please contact me.</span></li>
+<li><span><code>Error 13 : Type {0} has no Add() method nor [Insert() 
+method and Count get method], we can not set its items.</code><br>The type 
+is an enumeration, not a List. UniversalSerializer needs to be able to add 
+items to this enumeration in order to deserialize it. It tried to find an 
+adequate method, Add or Insert, but did not found one.<br>If you can modify 
+this type, you can inherit it from IList&lt;&gt;. More information
+<a href="Good_practices.html#List">here</a>.</span></li>
+<li><span><code>Error 14 : Type \"{0}\" can not be constructed because 
+this parameter's type has been disallowed by a filter: Parameter's 
+name=\"{1}\", Corresponding field's name=\"{2}\", 
+Type=\"{3}\".\n\tSuggestion: use a filter to disallow the main type, or to 
+allow the parameter's type.</code><br>If one of your
+<a href="Filters.html">Filters</a> disallows a field and the parametric 
+constructor needs this field, you have to take a decision: remove this 
+filter or add a new constructor (if you can modify this type).<br>Same 
+problem with the <a href="Attributes.html">Attributes</a>.</span></li>
+<li><span><code>Error 15 : The type '{0}' uses {1} as TypeConverter, but 
+it does not convert to string correctly. Please investigate or contact the 
+type's author.</code><br>The type has TypeConverterAttribute as an attribute, 
+therefore UniversalSerializer uses the provided special function to transcode the 
+instance to a string. Unfortunately, this function does not work correctly.<br>If you can modify this type, please remove this attribute.<br>If not, please 
+contact me and/or add yourself the incorrect type to&nbsp; 
+"CLRTypeConverterContainer._IsValidType()", in 
+"CLRTypeConverterContainer.cs".</span></li>
+<li><code>Error 16 : The type '{0}' uses {1} as TypeConverter, but its 
+transcoding type is unknown. Please investigate or contact the type's 
+author.</code><br><span>The type has TypeConverterAttribute as an attribute, 
+therefore UniversalSerializer uses the provided function to transcode the 
+instance to a string. Unfortunately, this function does not work correctly.<br>If you can modify this type, please remove this attribute.<br>If not, please 
+contact me and/or add yourself the incorrect type to&nbsp; 
+"CLRTypeConverterContainer._IsValidType()", in 
+"CLRTypeConverterContainer.cs".</span></li>
+<li><code>Error 17 : Listed assembly in stream can not be loaded: \"{0}\". 
+Error={1}</code><br>Occurs when deserializing a type which assembly can 
+not be loaded.<br>Type's assemblies are listed in the stream on 
+serialization and are necessary for deserialization.</li>
+<li><code>Error 18 : Warning: DateTimeKind has more than 4 items now. That 
+will cause problems in DateTimes. See ToTicksAndKind().</code><br>Apparently, .NET's 
+DateTimeKind implementation has changed. UniversalSerializer has to be 
+adapted consequently.</li>
+<li><code>Error 19 : Type {0} can not be deserialized because of 1) an 
+error in its Container and 2) a refused private field.</code><br>Two 
+cumulative reasons: The container of this type has been canceled on 
+serialization, probably because it was not able to contain this value. And, 
+one (or more) private fields is (are) refused by a filter because of its 
+type.<br><span>If you can modify this type, remove the container or 
+attribute that cause this error, or remove the private field that is refused 
+by the filters, or modify the filter.<br>If not, please contact me.</span></li>
+<li><code>Error 20 : (internal) Can not create a TypeManager for type {0}.</code><br>If it is under Silverlight, it may be due to another type, please see 
+sub-exceptions until you find "Error 21".<br>If not Silverlight, that is an unexpected error, please inform me 
+then I can study it.</li>
+<li><code>Error 21 : Silverlight does not allow creation of a TypeManager 
+for private type {0}.</code><br>There is a strong security protection in 
+Silverlight that limits type access (usually: a private type in another 
+assembly).<br>This version of UniversalSerializer can not serialize this 
+type.<br>Suggestion: for now, try to avoid this type or any type that 
+contains it as a field or a property.<br>Sorry, I have no solution at this 
+time.</li>
+<li><code>Error 22 : </code><span><code>Type {0} has a 
+circular type in its constructor parameters in a form that is not supported 
+by the deserializer.</code><br>This type is constructed by a parametric 
+constructor. One (or more) of its parameters is a circular type.<br>Two 
+situations are not supported:</span><ul>
+<li><span>When a not-indexed Enumerable contains 
+this type, or</span></li>
+<li><span>when there is a Dictionary&lt;T1, T2&gt; where T1 and T2 are 
+circular types.<br>Possible solutions:</span></li>
+<li><span>Add a default constructor to the 
+main type.</span></li>
+<li><span>Use IList in place of not-indexed Enumerables.</span></li>
+<li><span>Avoid 
+this kind of dictionary.<br>If you can not modify this type, please create a 
+Container, or a Filter, or contact me.</span></li>
+</ul>
+</li>
 </ol>
-<h2><span><a name="Error messages in UniversalSerializerWPF.dll"></a>
-Error messages in UniversalSerializerWPF.dll</span></h2>
+<h2><span><a id="Error messages in UniversalSerializerWPF.dll"></a>
+Error messages in UniversalSerializer 3 for WPF on NET 4_5.dll</span></h2>
 
 
 <ol>
-	<li><strong>Error WPF 1 : No public static field DependencyProperty 
-	{0} of type {1} found in type {2}.</strong><br>Occurs when deserializing a 
-	DependencyProperty. The type does not define the required field.<br>
-	Normally, for each dependency property, a static field should be defined. 
-	Example, Window has an "Icon" property, and the static definition of Window 
-	has an "IconProperty" field.<br>The static field must have the same name as 
-	the DependencyProperty, more "Property".</li>
-	<li><strong>Error WPF 2 : The type '{0}' uses {1} as ValueSerializer, but it 
-	was not transcoded correctly. Please investigate or contact the author.</strong><br>
-	<span>The type has ValueSerializerAttribute as an attribute, 
-	therefore UniversalSerializerWPF uses the provided function to transcode the 
-	instance to a string. Unfortunately, this function does not work correctly.<br>If you can modify this type, please remove this attribute.<br>If not, please 
-	contact me and/or add yourself the incorrect type to&nbsp; 
-	"XAMLValueSerializerContainer._IsValidType()", in 
-	"XAMLValueSerializerContainer.cs".</span></li>
+<li><code>Error WPF 1 : No public static field DependencyProperty 
+{0} of type {1} found in type {2}.</code><br>Occurs when deserializing a 
+DependencyProperty. The type does not define the required field.<br>
+Normally, for each dependency property, a static field should be defined. 
+Example, Window has an "Icon" property, and the static definition of Window 
+has an "IconProperty" field.<br>The static field must have the same name as 
+the DependencyProperty, more "Property".</li>
+<li><code>Error WPF 2 : The type '{0}' uses {1} as ValueSerializer, but it 
+was not transcoded correctly. Please investigate or contact the author.</code><br>
+<span>The type has ValueSerializerAttribute as an attribute, 
+therefore UniversalSerializerWPF uses the provided function to transcode the 
+instance to a string. Unfortunately, this function does not work correctly.<br>If you can modify this type, please remove this attribute.<br>If not, please 
+contact me and/or add yourself the incorrect type to&nbsp; 
+"XAMLValueSerializerContainer._IsValidType()", in 
+"XAMLValueSerializerContainer.cs".</span></li>
 </ol>
-<h2><span><a name="Error messages in UniversalSerializerWinForm.dll">
-</a>Error messages in UniversalSerializerWinForm.dll</span></h2>
+<h2><span><a id="Error messages in UniversalSerializerWinForm.dll">
+</a>Error messages in UniversalSerializer 3 Windows Forms for NET x_y.dll</span></h2>
 
 
 <p>There is no public error message for now.</p>
-<h2>'<a name="Bugs"></a>Bugs' or defects ?</h2>
-<p>What bugs ? You will find products to kill bugs at your local store, if there 
+<h2>'<a id="Bugs"></a>Bugs' or defects ?</h2>
+<p>What <strong>bugs</strong> ? You will find products to kill bugs at your local store, if there 
 are any in your computer or in your house !&nbsp;&nbsp; ;)</p>
 <p>More seriously, this word, 'bug', was a joke on the first decades of computers 
 (1940-1960). At that time, 
-computers were big monsters where small animals could enter in and give pretexts 
+computers were big mechanical monsters where small animals could enter in and give pretexts 
 to programmers.<br>60 years after, I feel&nbsp;this word has not much sense 
 anymore. 
 Today, it is no more a joke, only a technical word that makes nobody laugh. We 
@@ -210,8 +233,12 @@ young programmers.</p>
 else. Something clear to programmers and to the public in general.</p>
 <p>If you want to do jokes, please invent something adapted to the modern 
 reality. Be inventive!</p>
-<p>By the way, if you find errors in UniversalSerializer, I will not pretext 
+<p>By the way, if you find defects in UniversalSerializer, I will not pretext 
 they are due to small animals, virus, secret government agencies intrusions or to 
-ETs.<br>Or maybe I'll reply that if I'm looking for a huge pretext !&nbsp;&nbsp; ;)</p>
+ETs.<br>Or maybe I'll reply that if I'm looking for a huge pretext, after all !&nbsp;&nbsp; ;)</p>
 
-</body></html>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+﻿
+Do NOT check the option "Compile with native toolchain" in your application project page, Build tab.
+That would cause a FailFast exception on deserialization.
+It is a defect (in the DLL or in .NET Native itself) I have to study.

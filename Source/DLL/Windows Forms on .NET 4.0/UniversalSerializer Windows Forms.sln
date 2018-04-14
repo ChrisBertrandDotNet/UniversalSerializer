@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{707FDF8D-4982-4835-BA69-58B9CBD33091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer 3 for NET 4_0", "..\NET 4.0\UniversalSerializer for NET 4_0\UniversalSerializer 3 for NET 4_0.csproj", "{B51FA340-0331-45A0-B166-0CAFEEDA20C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalSerializer 3 for Windows Forms on NET 4.0", "UniversalSerializer Windows Forms\UniversalSerializer 3 for Windows Forms on NET 4.0.csproj", "{2B204C85-0467-4891-9017-BFB10C5B58DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{707FDF8D-4982-4835-BA69-58B9CBD33091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707FDF8D-4982-4835-BA69-58B9CBD33091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707FDF8D-4982-4835-BA69-58B9CBD33091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707FDF8D-4982-4835-BA69-58B9CBD33091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51FA340-0331-45A0-B166-0CAFEEDA20C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B204C85-0467-4891-9017-BFB10C5B58DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B204C85-0467-4891-9017-BFB10C5B58DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B204C85-0467-4891-9017-BFB10C5B58DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B204C85-0467-4891-9017-BFB10C5B58DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

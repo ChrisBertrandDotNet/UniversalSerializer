@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tester"
+             x:Class="Tester.MainPage">
+
+	<StackLayout Orientation="Vertical">
+		<StackLayout Orientation="Horizontal">
+			<Label Text="Failure count:"/>
+			<Label x:Name="FailureCount" Text="testing.."/>
+		</StackLayout>
+		<ListView x:Name="TestList">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout BackgroundColor="#eee" Orientation="Horizontal">
+							<Label Text="{Binding Order}" />
+							<Label Text="{Binding Title}"/>
+							<Switch IsToggled="{Binding Success}" IsEnabled="False" />
+							<Label Text="{Binding Error}"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>

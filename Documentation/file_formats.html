@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html dir="ltr" lang="en">
+
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>UniversalSerializer - File formats</title>
+<meta content="Christophe Bertrand" name="author">
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="navigation" role="navigation">
+<ul>
+<li><a href="index.html">Presentation</a></li>
+<li><a href="examples.html">Examples</a></li>
+<li><a href="solutions_and_projects.html">Solutions (DLLs)</a></li>
+<li><a href="good_practices.html">Good practices</a></li>
+<li><a href="attributes.html">Attributes</a></li>
+<li><a href="containers.html">Containers</a></li>
+<li><a href="filters.html">Filters</a></li>
+<li><a href="errors.html">Errors on execution</a></li>
+<li><a href="license.html">License</a></li>
+<li><a href="history.html">History</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div id="page_content" role="main">
+<h1>File formats</h1>
+<p class="remarque">WORK IN PROGRESS<br>please do not refer to this document until it is completed.</p>
+<p>&nbsp;</p>
+<p>UniversalSerializer has three file formats (binary, xml and json) sharing the same structure:</p>
+<ul>
+<li>The file formats version 2.0 and 3.0 are slightly different.<br>The format 1.0 is totally different and is supported only in the DLL version 1.</li>
+<li>The stream is saved as UTF-8.</li>
+<li>The stream is multiplexed: it interlaces two virtual sub-streams that are saved in one ordinary Stream.</li>
+<li>The stream 0 (zero) contains the type descriptors.</li>
+<li>The stream 1 (one) contains the data: the structure values and the class instances.</li>
+<li>The stream is structured as a tree.<br>That is independent from the virtual streams.<br>In fact, every serialization - Serialize() - add a tree to the main stream.</li>
+<li>The type descriptors are saved at the last moment: just before this type of data is serialized for the first time.<br>They are serialized the same as any value, except this serialization is written in the stream 0.</li>
+<li>Every type has an identifier: an integer number.</li>
+<li>The "primitive" types have a predefined identifier.<br>They are the same as in the System.TypeCode enumeration.</li>
+<li>A limited set of types from UniversalSerializer have a predefined identifier.<br>They are numbered from 25 (Twenty-five).</li>
+<li>The described types, specific to a particular stream, are numbered from:<ul>
+<li>35 (thirty-five) in the file format 2.0.</li>
+<li>45 (forty-five) in the file format 3.0.</li>
+</ul>
+</li>
+<li>At any moment, a class instance can be serialized.<br>When deserialized, this value is added to the instance list. Its identifier depends on its order in this list.</li>
+<li>To save space, the obvious information are not serialized to the stream.<ul>
+<li>The type of a value is not specified when it is the type of the field/collection-item.</li>
+<li>As said, the identifier of a class instance is deducted from its order in the class instance list.</li>
+<li>When entering the type stream sequence, the type SerializationTypeDescriptorCollection is attended.</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<p>&nbsp;</p>
+<p>The codes that structure the stream:</p>
+<table style="width: 100%">
+<tr>
+<td class="table_header">Code</td>
+<td class="table_header">binary</td>
+<td class="table_header">xml</td>
+<td class="table_header">json</td>
+<td class="table_header">details</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>7</td>
+<td>&lt;c&gt;</td>
+<td>"c":</td>
+<td>Entering a collection of items.</td>
+</tr>
+<tr>
+<td>Default value</td>
+<td>5</td>
+<td>&lt;f&gt;</td>
+<td>"f":</td>
+<td>A default value, in place of a serialized value.<br>The actual value depends on the declaring type.</td>
+</tr>
+<tr>
+<td>Dictionary</td>
+<td>8</td>
+<td>&lt;d&gt;</td>
+<td>"d":</td>
+<td>Entering a dictionary of pairs.</td>
+</tr>
+<tr>
+<td>End</td>
+<td>20</td>
+<td>&lt;end/&gt;</td>
+<td>"end":</td>
+<td>Specifies the end of a serialization sequence.</td>
+</tr>
+<tr>
+<td>Instances stream</td>
+<td>1</td>
+<td>&lt;s1&gt;</td>
+<td>"s1":</td>
+<td>Entering the virtual sub-stream 1:<br>the instance stream.</td>
+</tr>
+<tr>
+<td>Null value</td>
+<td>4</td>
+<td>&lt;z&gt;</td>
+<td>"z":</td>
+<td>A null value, in place of an instance identifier.<br>It can specify an empty collection too.</td>
+</tr>
+<tr>
+<td>Primitive value</td>
+<td>2</td>
+<td>&lt;p&gt;</td>
+<td>"p":</td>
+<td>A value. Its type is "primitive" as it belongs to TypeCode.</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>3</td>
+<td>&lt;r&gt;</td>
+<td>"r":</td>
+<td>A reference to a class instance.</td>
+</tr>
+<tr>
+<td>Serialization sequence</td>
+<td>implicit</td>
+<td>&lt;data&gt;</td>
+<td>implicit</td>
+<td>Every time Serialize() is called, this sequence/tree-root is added to the main stream.</td>
+</tr>
+<tr>
+<td>Sub-branch</td>
+<td>6</td>
+<td>&lt;b&gt;</td>
+<td>"b":</td>
+<td>Entering a sub-branch of the tree.</td>
+</tr>
+<tr>
+<td>Types stream</td>
+<td>0</td>
+<td>&lt;s0&gt;</td>
+<td>"s0":</td>
+<td>Entering the virtual sub-stream 0:<br>the type descriptor stream.</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+<p>The properties/attributes of the structural codes:</p>
+<table style="width: 100%">
+<tr>
+<td class="table_header">Property</td>
+<td class="table_header">Apply to codes</td>
+<td class="table_header">binary</td>
+<td class="table_header">xml</td>
+<td class="table_header">json</td>
+<td class="table_header">details</td>
+</tr>
+<tr>
+<td>Type identifier</td>
+<td>Sub-branch</td>
+<td>16</td>
+<td>&lt;b <strong>t</strong>="30"&gt;</td>
+<td>"t":</td>
+<td>Specifies what type applies to the value.<br>This identifier is an integer number.</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>Sub-branch, collections and dictionaries</td>
+<td>32</td>
+<td>&lt;b <strong>l</strong>="1"&gt;</td>
+<td>"l":</td>
+<td>The total number of items in the collection, dictionary or sub-branch.</td>
+</tr>
+<tr>
+<td>Instance identifier</td>
+<td>Reference</td>
+<td>deducted</td>
+<td>&lt;r <strong>i</strong>="1"/&gt;</td>
+<td>"i":</td>
+<td>Gives a number as an instance identifier.</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>&nbsp;</td>
+<td>no</td>
+<td>n="TheName"</td>
+<td>"n":</td>
+<td>Name ("debugging" only).</td>
+</tr>
+<tr>
+<td>Type name</td>
+<td>&nbsp;</td>
+<td>no</td>
+<td>typeName="TheType"</td>
+<td>typeName</td>
+<td>The type name ("debugging" only).</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+<p>The predefined types:</p>
+<table style="width: 100%">
+<tr>
+<td class="table_header" style="width:5em">Identifier</td>
+<td class="table_header" style="width:5em">Category</td>
+<td class="table_header">Type</td>
+</tr>
+<tr>
+<td>0</td>
+<td>&nbsp;</td>
+<td>not a type</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Primitive</td>
+<td>System.Object</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Primitive</td>
+<td>unused (DBNull in TypeCode)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Primitive</td>
+<td>System.Boolean</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Primitive</td>
+<td>System.Char</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Primitive</td>
+<td>System.SByte</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Primitive</td>
+<td>System.Byte</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Primitive</td>
+<td>System.Int16</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Primitive</td>
+<td>System.UInt16</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Primitive</td>
+<td>System.Int32</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Primitive</td>
+<td>System.UInt32</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Primitive</td>
+<td>System.Int64</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Primitive</td>
+<td>System.UInt64</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Primitive</td>
+<td>System.Single</td>
+</tr>
+<tr>
+<td style="height: 25px">14</td>
+<td style="height: 25px">Primitive</td>
+<td style="height: 25px">System.Double</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Primitive</td>
+<td>System.Decimal</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Primitive</td>
+<td>System.DateTime</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Primitive</td>
+<td>unused (removed from TypeCode in the past)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Primitive</td>
+<td>System.String</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Internal</td>
+<td>System.Int32[]</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Internal</td>
+<td>System.String[]</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Internal</td>
+<td>UniversalSerializerLib3.SerializationTypeDescriptor</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Internal</td>
+<td>UniversalSerializerLib3.SerializationTypeDescriptorCollection</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Internal</td>
+<td>UniversalSerializerLib3.StreamFormat3.AssemblyIdentifier</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Internal</td>
+<td>UniversalSerializerLib3.StreamFormat3.AssemblyIdentifier[]</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Internal</td>
+<td>UniversalSerializerLib3.StreamFormat3.Header</td>
+</tr>
+</table>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+
+</body>
+
+</html>
